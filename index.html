@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Found — design mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFB;
+    --mist:#F1F5F2;
+    --mist-2:#E7EFEA;
+    --ink:#17312C;
+    --ink-soft:#4C6660;
+    --ink-faint:#8AA09A;
+    --pine:#0E6B5C;
+    --pine-deep:#0A4C42;
+    --rose:#F0567F;
+    --rose-deep:#D63E68;
+    --rose-pale:#FDE9EF;
+    --apricot:#FFB25E;
+    --apricot-deep:#B96F1E;
+    --apricot-pale:#FFF3E3;
+    --line:#E3E9E5;
+    --disp:'Bricolage Grotesque',sans-serif;
+    --body:'Figtree',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEBE4;font-family:var(--body);color:var(--ink);padding:48px 24px}
+  .intro{max-width:980px;margin:0 auto 36px}
+  .intro .logo{font-family:var(--disp);font-weight:800;font-size:44px;letter-spacing:-1.5px;color:var(--ink);display:inline-flex;align-items:center}
+  .intro .logo .ring-o{display:inline-block;width:30px;height:30px;border:4px solid var(--rose);border-radius:50%;margin:0 3px;transform:rotate(-8deg);position:relative;top:2px}
+  .intro p{color:var(--ink-soft);font-size:15px;margin-top:8px;max-width:640px;line-height:1.55}
+  .swatches{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .sw{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--ink-soft)}
+  .sw i{display:block;width:64px;height:40px;border-radius:10px;border:1px solid rgba(0,0,0,.06);font-style:normal}
+  .frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;max-width:1900px;margin:0 auto}
+  .frame-wrap{display:flex;flex-direction:column;gap:10px;align-items:center}
+  .frame-label{font-size:12px;font-weight:600;color:var(--ink-soft);letter-spacing:.4px;text-transform:uppercase}
+  .phone{width:320px;height:660px;background:var(--paper);border-radius:38px;border:1px solid #D8D5CB;box-shadow:0 18px 40px rgba(23,49,44,.12);overflow:hidden;position:relative;display:flex;flex-direction:column}
+  .statusbar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;font-weight:600;color:var(--ink)}
+  .appbar{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 6px}
+  .appbar .wordmark{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.8px;display:inline-flex;align-items:center;color:var(--ink)}
+  .appbar .wordmark .ring-o{display:inline-block;width:14px;height:14px;border:2.6px solid var(--rose);border-radius:50%;margin:0 1.5px;transform:rotate(-8deg)}
+  .icnbtn{width:34px;height:34px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--pine)}
+  .bottomnav{margin-top:auto;display:flex;justify-content:space-around;align-items:center;padding:10px 8px 20px;border-top:1px solid var(--line);background:var(--paper)}
+  .navit{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--ink-faint);font-weight:600;position:relative}
+  .navit .glyph{width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;border-radius:50%}
+  .navit.active{color:var(--pine-deep)}
+  .navit.active .glyph{border:2.4px solid var(--rose);transform:rotate(-6deg)}
+  .navit.active .glyph span{transform:rotate(6deg)}
+
+  .disco-card{margin:6px 14px 0;border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line);flex:1;display:flex;flex-direction:column;max-height:452px}
+  .photo{flex:1;position:relative;background:
+      radial-gradient(120px 120px at 70% 25%, #FFD9A8 0%, transparent 70%),
+      radial-gradient(160px 200px at 30% 70%, #F6A7BE 0%, transparent 75%),
+      linear-gradient(160deg,#F3E4D3 0%,#E4C6D0 55%,#C9DED4 100%)}
+  .photo .tagline{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--pine-deep);display:flex;align-items:center;gap:5px}
+  .photo .silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:190px;height:230px;border-radius:110px 110px 0 0;background:linear-gradient(180deg,#B98D74,#8E6650)}
+  .photo .silhouette::before{content:"";position:absolute;top:-58px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:#B98D74}
+  .disco-info{padding:14px 16px 12px;background:#fff}
+  .disco-name{font-family:var(--disp);font-weight:700;font-size:24px;letter-spacing:-.6px;display:flex;align-items:center;gap:8px}
+  .badge-prem{width:20px;height:20px;border-radius:50%;border:2.4px solid var(--pine);display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:var(--pine);font-weight:800}
+  .disco-meta{display:flex;gap:14px;margin-top:5px;font-size:12.5px;color:var(--ink-soft);font-weight:500}
+  .disco-meta b{color:var(--rose-deep);font-weight:700}
+  .chips{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+  .chip{background:var(--mist);color:var(--pine-deep);font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px}
+  .disco-actions{display:flex;justify-content:center;gap:22px;padding:12px 0 6px}
+  .act{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
+  .act.pass{background:#fff;border:1.6px solid var(--line);color:var(--ink-faint)}
+  .act.like{background:var(--rose);color:#fff;box-shadow:0 8px 18px rgba(240,86,127,.35);position:relative}
+  .act.like::after{content:"";position:absolute;inset:-7px;border:2.4px solid var(--rose);border-radius:50%;opacity:.45;transform:rotate(-8deg)}
+  .act-label{font-size:10px;font-weight:700;color:var(--ink-faint);text-align:center;margin-top:4px;letter-spacing:.6px}
+
+  .match-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;text-align:center}
+  .pair{position:relative;width:230px;height:150px;margin-bottom:26px}
+  .avatar{width:112px;height:112px;border-radius:50%;position:absolute;top:19px;border:5px solid var(--paper)}
+  .avatar.a{left:0;background:linear-gradient(150deg,#F0B98F,#C97B57)}
+  .avatar.b{right:0;background:linear-gradient(150deg,#F2A9C1,#B96A8B)}
+  .pair .bigring{position:absolute;inset:-14px -22px;border:5px solid var(--rose);border-radius:52%;transform:rotate(-7deg)}
+  .pair .spark{position:absolute;top:-6px;right:6px;color:var(--apricot);font-size:22px;transform:rotate(15deg)}
+  .match-title{font-family:var(--disp);font-weight:800;font-size:34px;letter-spacing:-1.2px;line-height:1.05}
+  .match-title em{font-style:normal;color:var(--rose)}
+  .match-sub{color:var(--ink-soft);font-size:14px;margin-top:10px;line-height:1.5}
+  .btn{border-radius:999px;font-weight:700;font-family:var(--body);display:flex;align-items:center;justify-content:center;gap:8px}
+  .btn.primary{background:var(--rose);color:#fff;height:52px;width:100%;font-size:15px;box-shadow:0 10px 22px rgba(240,86,127,.3)}
+  .btn.ghost{background:transparent;color:var(--pine);height:46px;width:100%;font-size:14px}
+  .match-cta{width:100%;padding:26px 22px 30px;display:flex;flex-direction:column;gap:6px}
+
+  .chat-head{display:flex;align-items:center;gap:10px;padding:8px 16px 10px;border-bottom:1px solid var(--line)}
+  .chat-ava{width:40px;height:40px;border-radius:50%;background:linear-gradient(150deg,#F2A9C1,#B96A8B);position:relative}
+  .chat-ava::after{content:"";position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#2FBF8F;border:2px solid var(--paper)}
+  .chat-name{font-family:var(--disp);font-weight:700;font-size:17px;display:flex;align-items:center;gap:6px}
+  .chat-sub{font-size:11px;color:var(--ink-faint);font-weight:500}
+  .lovelevel{margin-left:auto;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .lovelevel .lring{width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--rose) 0 65%, var(--mist-2) 65% 100%);display:flex;align-items:center;justify-content:center}
+  .lovelevel .lring i{width:22px;height:22px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:10px}
+  .lovelevel span{font-size:8.5px;font-weight:700;color:var(--rose-deep);letter-spacing:.3px}
+  .chat-scroll{flex:1;padding:14px 14px 8px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+  .bub{max-width:78%;padding:10px 14px;font-size:13.5px;line-height:1.45;font-weight:500}
+  .bub.in{align-self:flex-start;background:var(--mist);color:var(--ink);border-radius:4px 20px 20px 20px}
+  .bub.out{align-self:flex-end;background:var(--pine);color:#fff;border-radius:20px 4px 20px 20px}
+  .stamp{font-size:9.5px;color:var(--ink-faint);font-weight:600;margin-top:-4px}
+  .stamp.r{align-self:flex-end}
+  .gift-card{align-self:flex-start;background:var(--apricot-pale);border:1px solid #F5D9AE;border-radius:8px 20px 20px 20px;padding:10px 14px;display:flex;gap:10px;align-items:center;max-width:82%}
+  .gift-ic{width:38px;height:38px;border-radius:12px;background:var(--apricot);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .gift-t{font-size:12.5px;font-weight:700;color:var(--apricot-deep)}
+  .gift-s{font-size:11px;color:#9A6B2B;font-weight:500}
+  .paywall-bar{margin:0 14px 10px;background:var(--rose-pale);border:1px solid #F7C6D4;border-radius:18px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+  .paywall-bar .txt{flex:1}
+  .paywall-bar .t1{font-size:12.5px;font-weight:700;color:var(--rose-deep)}
+  .paywall-bar .t2{font-size:11px;color:#B4587A;font-weight:500}
+  .minibtn{background:var(--rose);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:8px 14px}
+  .composer{display:flex;align-items:center;gap:8px;padding:8px 14px 22px}
+  .composer .field{flex:1;height:44px;background:var(--mist);border-radius:999px;display:flex;align-items:center;padding:0 16px;color:var(--ink-faint);font-size:13px;font-weight:500}
+  .composer .send{width:44px;height:44px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px}
+
+  .store-hero{margin:8px 16px 4px;background:var(--pine);border-radius:24px;padding:18px;color:#fff;position:relative;overflow:hidden}
+  .store-hero::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border:10px solid rgba(255,255,255,.14);border-radius:50%;transform:rotate(-8deg)}
+  .store-hero .h1{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.6px}
+  .store-hero .h2{font-size:12px;opacity:.85;margin-top:4px;font-weight:500}
+  .store-hero .bal{margin-top:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
+  .coin{width:18px;height:18px;border-radius:50%;background:var(--apricot);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#7A4A0E;font-weight:800}
+  .packs{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px}
+  .pack{background:#fff;border:1.4px solid var(--line);border-radius:20px;padding:13px 12px;text-align:center;position:relative}
+  .pack.best{border-color:var(--rose)}
+  .pack .flag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--rose);color:#fff;font-size:9px;font-weight:800;letter-spacing:.5px;border-radius:999px;padding:3px 9px}
+  .pack .amt{font-family:var(--disp);font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;gap:6px}
+  .pack .prc{font-size:12px;color:var(--ink-soft);font-weight:600;margin-top:3px}
+  .pack .buy{margin-top:9px;background:var(--rose);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:7px 0}
+  .pack.alt .buy{background:var(--mist);color:var(--pine-deep)}
+  .subrow{margin:2px 16px 0;background:var(--apricot-pale);border:1px solid #F5D9AE;border-radius:20px;padding:13px 14px;display:flex;align-items:center;gap:11px}
+  .subrow .pp{width:38px;height:38px;border-radius:50%;border:3px solid var(--apricot);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--apricot-deep);font-weight:800}
+  .subrow .st1{font-size:13px;font-weight:700;color:var(--apricot-deep)}
+  .subrow .st2{font-size:11px;color:#9A6B2B;font-weight:500}
+
+  .prof-hero{display:flex;flex-direction:column;align-items:center;padding:14px 0 6px}
+  .prof-ava{width:104px;height:104px;border-radius:50%;background:linear-gradient(150deg,#F0B98F,#C97B57);position:relative}
+  .prof-ava .edit{position:absolute;right:-2px;bottom:2px;width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;border:3px solid var(--paper)}
+  .prof-name{font-family:var(--disp);font-weight:800;font-size:24px;letter-spacing:-.7px;margin-top:10px;display:flex;align-items:center;gap:7px}
+  .prof-loc{font-size:12.5px;color:var(--ink-soft);font-weight:500;margin-top:3px}
+  .prof-stats{display:flex;gap:8px;padding:14px 16px 4px}
+  .pstat{flex:1;background:var(--mist);border-radius:18px;padding:11px 8px;text-align:center}
+  .pstat .n{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--pine-deep)}
+  .pstat .l{font-size:10px;color:var(--ink-soft);font-weight:600;margin-top:2px}
+  .fieldrow{margin:8px 16px 0;background:#fff;border:1.4px solid var(--line);border-radius:18px;padding:12px 14px}
+  .fieldrow .fl{font-size:10.5px;font-weight:700;color:var(--ink-faint);letter-spacing:.5px;text-transform:uppercase}
+  .fieldrow .fv{font-size:14px;font-weight:600;margin-top:3px}
+  .fieldrow.hint{border-color:#F7C6D4;background:var(--rose-pale)}
+  .fieldrow.hint .fv{color:var(--rose-deep)}
+  .fieldrow.hint .fh{font-size:11px;color:#B4587A;font-weight:500;margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <div class="logo">f<span class="ring-o"></span>und</div>
+  <p><strong>Found</strong> — arah visual untuk client kedua. Siang hari, bukan senja: putih kertas, pine untuk struktur, rose untuk aksi, apricot untuk coin &amp; gift. Signature: <em>ring</em> — tanda lingkaran "gue nemuin lo", muncul di logo, tombol like, layar match, nav aktif, dan Love Level.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#FDFDFB"></i>Paper FDFDFB</div>
+    <div class="sw"><i style="background:#F1F5F2"></i>Mist F1F5F2</div>
+    <div class="sw"><i style="background:#17312C"></i>Ink 17312C</div>
+    <div class="sw"><i style="background:#0E6B5C"></i>Pine 0E6B5C</div>
+    <div class="sw"><i style="background:#F0567F"></i>Rose F0567F</div>
+    <div class="sw"><i style="background:#FFB25E"></i>Apricot FFB25E</div>
+  </div>
+</div>
+
+<div class="frames">
+
+  <div class="frame-wrap">
+    <div class="phone">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
+      <div class="appbar">
+        <span class="wordmark">f<span class="ring-o"></span>und</span>
+        <div style="display:flex;gap:8px"><div class="icnbtn">⚲</div><div class="icnbtn">⚙</div></div>
+      </div>
+      <div class="disco-card">
+        <div class="photo">
+          <div class="tagline"><span style="width:8px;height:8px;border-radius:50%;background:#2FBF8F;display:inline-block"></span>Active now</div>
+          <div class="silhouette"></div>
+        </div>
+        <div class="disco-info">
+          <div class="disco-name">Kayla, 24 <span class="badge-prem">✓</span></div>
+          <div class="disco-meta"><span><b>◎</b> 3 mi away</span><span>Austin, TX</span></div>
+          <div class="chips"><span class="chip">Coffee</span><span class="chip">Hiking</span><span class="chip">Live music</span></div>
+        </div>
+      </div>
+      <div class="disco-actions">
+        <div><div class="act pass">✕</div><div class="act-label">PASS</div></div>
+        <div><div class="act like">✓</div><div class="act-label">FOUND</div></div>
+      </div>
+      <div class="bottomnav">
+        <div class="navit active"><div class="glyph"><span>◈</span></div>Discover</div>
+        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
+        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
+        <div class="navit"><div class="glyph"><span>◉</span></div>Profile</div>
+      </div>
+    </div>
+    <div class="frame-label">Discovery</div>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="phone">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
+      <div class="match-body">
+        <div class="pair">
+          <div class="avatar a"></div>
+          <div class="avatar b"></div>
+          <div class="bigring"></div>
+          <div class="spark">✦</div>
+        </div>
+        <div class="match-title">You <em>found</em><br>each other</div>
+        <div class="match-sub">Kayla circled you back. Say something before the moment cools off.</div>
+      </div>
+      <div class="match-cta">
+        <div class="btn primary">Say hi to Kayla</div>
+        <div class="btn ghost">Keep discovering</div>
+      </div>
+    </div>
+    <div class="frame-label">Match — "Found"</div>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="phone">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
+      <div class="chat-head">
+        <div class="chat-ava"></div>
+        <div>
+          <div class="chat-name">Kayla <span class="badge-prem" style="width:16px;height:16px;font-size:8px">✓</span></div>
+          <div class="chat-sub">9:12 PM her time · Austin</div>
+        </div>
+        <div class="lovelevel"><div class="lring"><i>🔥</i></div><span>BURNING</span></div>
+      </div>
+      <div class="chat-scroll">
+        <div class="bub in">okay but you can't just say you make the best pancakes and not prove it 🥞</div>
+        <div class="bub out">bold of you to assume I don't have receipts. Sunday. Your move.</div>
+        <div class="stamp r">Read 9:14 PM</div>
+        <div class="gift-card">
+          <div class="gift-ic">🧸</div>
+          <div><div class="gift-t">Kayla sent you a Teddy</div><div class="gift-s">+15 love points · Burning 65%</div></div>
+        </div>
+        <div class="bub in">a little something while you think about those pancakes 😌</div>
+      </div>
+      <div class="paywall-bar">
+        <div class="txt"><div class="t1">Free chats used up</div><div class="t2">Top up coins to keep this going</div></div>
+        <div class="minibtn">Get coins</div>
+      </div>
+      <div class="composer">
+        <div class="field">Message Kayla…</div>
+        <div class="send">➤</div>
+      </div>
+    </div>
+    <div class="frame-label">Chat + gift + paywall</div>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="phone">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
+      <div class="appbar"><span style="font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.5px">Coins &amp; plans</span><div class="icnbtn">✕</div></div>
+      <div class="store-hero">
+        <div class="h1">Keep the spark going</div>
+        <div class="h2">Coins unlock chats, gifts, and photos</div>
+        <div class="bal"><span class="coin">c</span> 120 coins</div>
+      </div>
+      <div class="packs">
+        <div class="pack alt"><div class="amt"><span class="coin">c</span>100</div><div class="prc">Rp40.000</div><div class="buy">Buy</div></div>
+        <div class="pack best"><div class="flag">POPULAR</div><div class="amt"><span class="coin">c</span>525</div><div class="prc">Rp179.000</div><div class="buy">Buy</div></div>
+        <div class="pack alt"><div class="amt"><span class="coin">c</span>1.050</div><div class="prc">Rp329.000</div><div class="buy">Buy</div></div>
+        <div class="pack alt"><div class="amt"><span class="coin">c</span>2.300</div><div class="prc">Rp649.000</div><div class="buy">Buy</div></div>
+      </div>
+      <div class="subrow">
+        <div class="pp">+</div>
+        <div style="flex:1"><div class="st1">Premium+ · 3 months</div><div class="st2">Unlimited chat, voice notes, gold ring</div></div>
+        <div class="minibtn" style="background:var(--apricot);color:#5C3608">Rp599k</div>
+      </div>
+      <div class="bottomnav">
+        <div class="navit"><div class="glyph"><span>◈</span></div>Discover</div>
+        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
+        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
+        <div class="navit active"><div class="glyph"><span>◉</span></div>Profile</div>
+      </div>
+    </div>
+    <div class="frame-label">Coin store + Premium+</div>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="phone">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
+      <div class="appbar"><span style="font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.5px">Your profile</span><div class="icnbtn">⚙</div></div>
+      <div class="prof-hero">
+        <div class="prof-ava"><div class="edit">✎</div></div>
+        <div class="prof-name">Daniel, 27 <span class="badge-prem">✓</span></div>
+        <div class="prof-loc">Jakarta, Indonesia</div>
+      </div>
+      <div class="prof-stats">
+        <div class="pstat"><div class="n">12</div><div class="l">Found you</div></div>
+        <div class="pstat"><div class="n">4</div><div class="l">Matches</div></div>
+        <div class="pstat"><div class="n">120</div><div class="l">Coins</div></div>
+      </div>
+      <div class="fieldrow hint">
+        <div class="fl">Display name</div>
+        <div class="fv">********</div>
+        <div class="fh">Your name was hidden for safety. Choose a new one to keep chatting.</div>
+      </div>
+      <div class="fieldrow">
+        <div class="fl">Bio</div>
+        <div class="fv" style="font-weight:500;font-size:13px;line-height:1.45">Pancake scientist. Will trade hikes for good playlists.</div>
+      </div>
+      <div class="fieldrow">
+        <div class="fl">Interests</div>
+        <div class="chips" style="margin-top:6px"><span class="chip">Coffee</span><span class="chip">Gym</span><span class="chip">Movies</span></div>
+      </div>
+      <div class="bottomnav">
+        <div class="navit"><div class="glyph"><span>◈</span></div>Discover</div>
+        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
+        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
+        <div class="navit active"><div class="glyph"><span>◉</span></div>Profile</div>
+      </div>
+    </div>
+    <div class="frame-label">Profile (termasuk state nama disensor)</div>
+  </div>
+
+</div>
+</body>
+</html>

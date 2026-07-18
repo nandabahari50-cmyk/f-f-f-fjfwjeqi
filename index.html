@@ -597,59 +597,75 @@ lgRoot.innerHTML=`
  const tabs=Array.from(document.querySelectorAll('.lg-tab'));
  const PAD=8;
  const REST_W=78;
- let active=0, dragging=false, startX=0, wasDragged=false;
+ const SPRING='left .40s cubic-bezier(.34,1.56,.5,1), width .40s cubic-bezier(.34,1.56,.5,1)';
+ let active=0, dragging=false, startX=0, moved=0, capturedId=null;
 
- function slotCenter(i){const inner=wrap.clientWidth-PAD*2;const slot=inner/tabs.length;return PAD+slot*i+slot/2;}
- function setInd(cx,w){ind.style.left=(cx-w/2)+'px';ind.style.width=w+'px';}
-
- function activate(i,animate){
-   active=i;
+ function innerW(){return wrap.clientWidth-PAD*2;}
+ function slotCenter(i){const slot=innerW()/tabs.length;return PAD+slot*i+slot/2;}
+ function nearestIndex(cx){
+   const slot=innerW()/tabs.length;
+   return Math.max(0,Math.min(tabs.length-1,Math.floor((cx-PAD)/slot)));
+ }
+ // Always keep the pill fully inside the bar (never "escapes").
+ function setBounds(left,width){
+   const maxLeft=wrap.clientWidth-PAD-width;
+   left=Math.max(PAD,Math.min(left,maxLeft));
+   ind.style.left=left+'px';
+   ind.style.width=width+'px';
+ }
+ function highlight(i){
    tabs.forEach((t,idx)=>{
      const txt=t.querySelector('.lg-tab-txt');
      t.style.color=idx===i?'var(--hot)':'var(--subtle)';
-     txt.style.display=idx===i?'inline':'none';
+     if(txt)txt.style.display=idx===i?'inline':'none';
    });
-   ind.style.transition=animate?'left .40s cubic-bezier(.34,1.56,.5,1), width .40s cubic-bezier(.34,1.56,.5,1)':'none';
-   setInd(slotCenter(i),REST_W);
+ }
+ function settle(i,animate){
+   active=i;
+   highlight(i);
+   ind.style.transition=animate?SPRING:'none';
+   setBounds(slotCenter(i)-REST_W/2,REST_W);
    document.getElementById('lg-content-label').textContent=tabs[i].dataset.label;
  }
 
- tabs.forEach((t,i)=>t.addEventListener('click',()=>{if(!wasDragged)activate(i,true);}));
+ tabs.forEach((t,i)=>t.addEventListener('click',()=>{ if(moved<5) settle(i,true); }));
 
- function onDown(e){dragging=true;wasDragged=false;startX=(e.touches?e.touches[0].clientX:e.clientX);ind.style.transition='none';tabs.forEach(t=>t.style.cursor='grabbing');}
- function onMove(e){
+ function down(e){
+   dragging=true; moved=0; startX=e.clientX; capturedId=e.pointerId;
+   try{ wrap.setPointerCapture(e.pointerId); }catch(_){}
+   ind.style.transition='none';
+   tabs.forEach(t=>t.style.cursor='grabbing');
+ }
+ function move(e){
    if(!dragging)return;
-   const px=(e.touches?e.touches[0].clientX:e.clientX);
-   if(Math.abs(px-startX)>4)wasDragged=true;
+   moved=Math.max(moved,Math.abs(e.clientX-startX));
    const rect=wrap.getBoundingClientRect();
-   const minX=PAD+REST_W/2, maxX=wrap.clientWidth-PAD-REST_W/2;
-   let cx=Math.max(minX,Math.min(maxX,px-rect.left));
+   let cx=e.clientX-rect.left;
+   cx=Math.max(PAD+REST_W/2,Math.min(wrap.clientWidth-PAD-REST_W/2,cx));
+   // Elongate from the home tab toward the finger (liquid stretch).
    const home=slotCenter(active);
-   const stretch=Math.min(40,Math.abs(cx-home)*0.6);
-   setInd(cx,REST_W+stretch);
-   const inner=wrap.clientWidth-PAD*2, slot=inner/tabs.length;
-   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((cx-PAD)/slot)));
-   tabs.forEach((t,idx)=>t.style.color=idx===near?'var(--hot)':'var(--subtle)');
+   const lo=Math.min(home,cx), hi=Math.max(home,cx);
+   setBounds(lo-REST_W/2,(hi-lo)+REST_W);
+   highlight(nearestIndex(cx));
    if(e.cancelable)e.preventDefault();
  }
- function onUp(e){
-   if(!dragging)return;dragging=false;tabs.forEach(t=>t.style.cursor='grab');
-   const px=(e.changedTouches?e.changedTouches[0].clientX:e.clientX);
+ function up(e){
+   if(!dragging)return;
+   dragging=false;
+   tabs.forEach(t=>t.style.cursor='grab');
+   try{ wrap.releasePointerCapture(capturedId); }catch(_){}
    const rect=wrap.getBoundingClientRect();
-   const inner=wrap.clientWidth-PAD*2, slot=inner/tabs.length;
-   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((px-rect.left-PAD)/slot)));
-   activate(near,true);
-   setTimeout(()=>{wasDragged=false;},60);
+   const cx=Math.max(PAD,Math.min(wrap.clientWidth-PAD,e.clientX-rect.left));
+   // Always snap to the nearest tab — never rest between tabs.
+   settle(nearestIndex(cx),true);
  }
- wrap.addEventListener('pointerdown',onDown);
- window.addEventListener('pointermove',onMove);
- window.addEventListener('pointerup',onUp);
- wrap.addEventListener('touchstart',onDown,{passive:true});
- window.addEventListener('touchmove',onMove,{passive:false});
- window.addEventListener('touchend',onUp);
+ wrap.addEventListener('pointerdown',down);
+ wrap.addEventListener('pointermove',move);
+ wrap.addEventListener('pointerup',up);
+ wrap.addEventListener('pointercancel',up);
 
- setTimeout(()=>activate(0,false),80);
- window.addEventListener('resize',()=>activate(active,false));
+ setTimeout(()=>settle(0,false),80);
+ window.addEventListener('resize',()=>settle(active,false));
 })();
 </script>
 

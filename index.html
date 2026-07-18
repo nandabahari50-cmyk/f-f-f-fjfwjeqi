@@ -15,7 +15,7 @@
  --d-fg:#F2F6F3;--d-fgmuted:#A3B2AC;--d-fgsubtle:#6E7D77;--d-fgfaint:#4C5A54;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#E7E4DC;font-family:var(--body);color:var(--ink);line-height:1.5}
+body{background:#E7E4DC;font-family:var(--body);color:var(--ink);line-height:1.5;overflow-x:hidden}
 
 /* ===== TOP BAR / HEADER ===== */
 .masthead{background:linear-gradient(135deg,#3D1D3A,#7A2551 55%,var(--hotdeep));color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
@@ -53,10 +53,10 @@ body{background:#E7E4DC;font-family:var(--body);color:var(--ink);line-height:1.5
 .changes .tag{display:inline-block;background:var(--mist);border-radius:6px;padding:1px 6px;font-size:11px;font-family:monospace;color:var(--muted)}
 
 /* phones container */
-.phones{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.phones{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;width:100%}
 .pcol{display:flex;flex-direction:column;gap:8px;align-items:center}
 .plabel{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.phone{width:300px;height:600px;background:var(--paper);border-radius:32px;border:1px solid #D8D5CB;box-shadow:0 14px 34px rgba(23,49,44,.14);overflow:hidden;display:flex;flex-direction:column;color:var(--ink)}
+.phone{width:300px;max-width:88vw;height:600px;background:var(--paper);border-radius:32px;border:1px solid #D8D5CB;box-shadow:0 14px 34px rgba(23,49,44,.14);overflow:hidden;display:flex;flex-direction:column;color:var(--ink);flex-shrink:0}
 .phone.dark{background:var(--d-bg);color:var(--d-fg);border-color:#2a2a2a}
 .sb{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:10px;font-weight:600;flex-shrink:0}
 .icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
@@ -85,7 +85,39 @@ body{background:#E7E4DC;font-family:var(--body);color:var(--ink);line-height:1.5
 .dark .d-fgmuted{color:var(--d-fgmuted) !important}
 .dark .d-border{border-color:var(--d-border) !important}
 
-@media(max-width:900px){.toc ol{grid-template-columns:1fr}.sec-body{flex-direction:column}}
+/* ===== RESPONSIVE ===== */
+/* Tablet & below: stack change-list above phones, center everything */
+@media(max-width:1024px){
+  .toc ol{grid-template-columns:1fr 1fr}
+  .sec-body{flex-direction:column;align-items:center;gap:22px}
+  .changes{width:100%;max-width:560px}
+  .sec{padding:0 20px}
+}
+/* Mobile */
+@media(max-width:640px){
+  body{font-size:15px}
+  .masthead{padding:36px 18px 32px}
+  .masthead .wm{font-size:40px}
+  .masthead .wm .ring{width:28px;height:28px;border-width:4px}
+  .masthead h1{font-size:13px}
+  .masthead .sub{font-size:12px}
+  .toc{margin:-18px 14px 0;padding:18px 18px}
+  .toc ol{grid-template-columns:1fr;gap:4px 0}
+  .toc li{font-size:13px}
+  .sec{margin-top:40px;padding:0 14px}
+  .sec-num{font-size:30px}
+  .sec-h h2{font-size:22px}
+  .sec-desc{font-size:13px;padding-left:0;margin-bottom:16px}
+  .sec-h{gap:10px}
+  .changes{padding:16px 16px;border-radius:14px}
+  .changes li{font-size:13px}
+  .phone{width:290px;height:580px}
+  .footer{margin-top:48px;padding:32px 18px 48px}
+}
+/* Very small phones */
+@media(max-width:360px){
+  .phone{width:calc(100vw - 40px);height:560px}
+}
 </style>
 <script>
 const ICONS={
@@ -121,7 +153,7 @@ addEventListener('DOMContentLoaded',()=>document.querySelectorAll('[data-i]').fo
   <div class="ringdeco"></div><div class="ringdeco2"></div>
   <div class="wm">f<span class="ring"></span>und</div>
   <h1>SEMUA PERUBAHAN APK — REBRAND & RELAYOUT</h1>
-  <div class="sub">Dokumentasi visual lengkap: dari fork AfterGlow → Found. Setiap layar direlayout (bukan cuma ganti warna), rebrand "pink stabilo", basmi PII, sampai dark mode.</div>
+  <div class="sub">Dokumentasi visual lengkap: dari fork AfterGlow → Found. Setiap layar direlayout (bukan cuma ganti warna), rebrand "pink stabilo", basmi PII, dark mode, sampai liquid glass nav.</div>
   <div class="pill">com.found.app · Theme: Daylight + Dark</div>
 </div>
 
@@ -207,20 +239,20 @@ const SECTIONS=[
  phones:[{label:'Login',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody" style="padding:0">
-    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,#B83668);padding:26px 24px 54px;color:#fff;position:relative">
+    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,#B83668);padding:24px 24px 60px;color:#fff;position:relative">
       <div style="position:absolute;top:-30px;right:20px;width:110px;height:110px;border:10px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
-      <div style="margin-bottom:26px">${wm(22,'#fff')}</div>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:34px;line-height:1.02">Welcome<br><span style="font-style:italic;color:var(--apricot)">back</span>.</h2>
-      <p style="font-size:13px;opacity:.82;margin-top:10px">Your matches are waiting. Pick up right where you left off.</p>
+      <div style="margin-bottom:22px">${wm(22,'#fff')}</div>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:32px;line-height:1.02">Welcome<br><span style="font-style:italic;color:var(--apricot)">back</span>.</h2>
+      <p style="font-size:12.5px;opacity:.82;margin-top:8px">Your matches are waiting. Pick up right where you left off.</p>
     </div>
-    <div style="background:var(--paper);border-radius:30px 30px 0 0;margin-top:-30px;padding:26px 24px;flex:1">
-      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Email or username</div>
-      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:14px"><span style="color:var(--subtle)">${ico('person')}</span><span style="color:var(--faint);font-size:14px">ava_brooks or you@example.com</span></div>
-      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Password</div>
-      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:18px"><span style="color:var(--subtle)">${ico('lock')}</span><span style="color:var(--faint);font-size:14px">Enter password</span></div>
+    <div style="background:var(--paper);border-radius:34px 34px 0 0;margin-top:-34px;padding:22px 22px 20px;flex:1;position:relative;box-shadow:0 -6px 20px rgba(0,0,0,.06)">
+      <div style="font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:6px">Email or username</div>
+      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;margin-bottom:12px"><span style="color:var(--subtle)">${ico('person')}</span><span style="color:var(--faint);font-size:13px">ava_brooks or you@example.com</span></div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:6px">Password</div>
+      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;margin-bottom:16px"><span style="color:var(--subtle)">${ico('lock')}</span><span style="color:var(--faint);font-size:13px">Enter password</span></div>
       <div class="btn-primary">Continue</div>
-      <div style="margin-top:12px;background:transparent;border:1.5px solid var(--line);color:var(--ink);border-radius:16px;padding:13px;text-align:center;font-weight:700;font-size:14px">Create account</div>
-      <div style="text-align:center;color:var(--muted);font-size:12px;margin-top:16px">Private by design. Built for real connections.</div>
+      <div style="margin-top:10px;background:transparent;border:1.5px solid var(--line);color:var(--ink);border-radius:16px;padding:12px;text-align:center;font-weight:700;font-size:14px">Create account</div>
+      <div style="text-align:center;color:var(--muted);font-size:11.5px;margin-top:14px">Private by design. Built for real connections.</div>
     </div>
   </div>`}]
 },
@@ -306,14 +338,14 @@ const SECTIONS=[
   ['old','Bubble keluar emas pucat (#FFF1D6)','new','Bubble keluar pink stabilo teks putih'],
   ['plain','Bubble masuk tetap putih bersih (kontras enak)'],
   ['old','Tombol kirim gradient emas','new','Tombol kirim pink stabilo'],
-  ['plain','System pill (TRIGGER/GUIDE) + read receipt → pink/putih'],
-  ['plain','Gift bubble → apricot (keluarga warna coin/gift)'],
-  ['plain','Preview reply media: emoji HP → ikon Material vektor'],
+  ['plain','Header: back + avatar (ring premium) + nama + status "online" + video/search/menu'],
+  ['plain','Gift bubble → gradient krem/apricot (keluarga warna coin/gift)'],
+  ['plain','Background chat pakai gradient + doodle wallpaper (bukan solid)'],
  ],
  phones:[{label:'Room Chat',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody">
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)"><span style="color:var(--subtle)">‹</span><div style="width:38px;height:38px;border-radius:50%;padding:2px;background:linear-gradient(135deg,var(--rose,#F0567F),var(--teal))"><div style="width:100%;height:100%;border-radius:50%;background:linear-gradient(150deg,#F3B79A,#8E6a86)"></div></div><div style="flex:1"><div style="font-family:var(--disp);font-weight:700;font-size:15px">Kayla</div><div style="font-size:10px;color:var(--subtle)">9:12 PM her time</div></div><div style="background:var(--hotpale);color:var(--hottext);font-size:10px;font-weight:800;padding:5px 9px;border-radius:999px">12 left</div></div>
+    <div style="display:flex;align-items:center;gap:9px;padding:8px 12px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)"><span style="color:var(--subtle);font-size:18px">‹</span><div style="width:38px;height:38px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#F0567F,var(--teal))"><div style="width:100%;height:100%;border-radius:50%;background:linear-gradient(150deg,#F3B79A,#8E6a86)"></div></div><div style="flex:1;min-width:0"><div style="font-family:var(--disp);font-weight:700;font-size:15px">Kayla</div><div style="font-size:11px;color:var(--success);font-weight:600">online</div></div><span style="color:var(--subtle)">📹</span><span style="color:var(--subtle)">${ico('search')}</span><span style="color:var(--subtle);font-weight:800;font-size:18px">⋮</span></div>
     <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,#F2F8F4,#FDFDFB 50%,#FBF7F0);position:relative">
       <div style="position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle at 20% 30%,var(--ink) 2px,transparent 2px),radial-gradient(circle at 70% 60%,var(--ink) 2px,transparent 2px);background-size:60px 60px"></div>
       <div style="align-self:flex-start;background:#fff;border-radius:4px 16px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.05)">you actually cooked?? 🥞</div>
@@ -438,12 +470,12 @@ const SECTIONS=[
  phones:[{label:'Profil Persona',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody">
-    <div style="height:340px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;flex-shrink:0">
+    <div style="height:330px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;flex-shrink:0">
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,transparent 40%,rgba(10,20,18,.85) 100%)"></div>
       <div style="position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:#fff">${ico('close')}</div>
       <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:5px"><i style="width:26px;height:3px;border-radius:2px;background:#fff;display:block"></i><i style="width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.4);display:block"></i></div>
       <div style="position:absolute;top:14px;right:14px;background:var(--hot);color:#fff;font-size:10px;font-weight:800;padding:5px 10px;border-radius:999px">PREMIUM</div>
-      <div style="position:absolute;bottom:16px;left:16px;color:#fff"><h2 style="font-family:var(--disp);font-weight:800;font-size:26px">Kayla, 24</h2><div style="font-size:12px;opacity:.9;display:flex;align-items:center;gap:4px;margin-top:4px">${ico('pin')} 3 miles away</div></div>
+      <div style="position:absolute;bottom:52px;left:16px;color:#fff"><h2 style="font-family:var(--disp);font-weight:800;font-size:26px">Kayla, 24</h2><div style="font-size:12px;opacity:.92;display:flex;align-items:center;gap:4px;margin-top:4px">${ico('pin')} 3 miles away</div></div>
     </div>
     <div style="flex:1;background:var(--paper);border-radius:24px 24px 0 0;margin-top:-24px;padding:18px;position:relative;overflow:hidden">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><div style="width:32px;height:32px;border-radius:10px;background:var(--apricotpale);color:var(--apricottext);display:flex;align-items:center;justify-content:center">${ico('work')}</div><div style="font-size:13px;font-weight:600">Graphic Designer</div></div>
@@ -510,154 +542,113 @@ const lgRoot=document.getElementById('liquid-glass-root');
 lgRoot.innerHTML=`
  <div class="sec" id="s13">
    <div class="sec-h"><span class="sec-num">13</span><h2>Liquid Glass Nav ✨</h2></div>
-   <div class="sec-desc">Konsep (belum di-APK) — nav pill dengan efek <b>liquid glass ala iOS 26</b>: indikator aktif <b>meregang/molor</b> saat pindah tab (efek gooey/metaball), <b>bisa di-drag</b>, dan background <b>frosted blur</b>. <b>Coba klik atau drag tab di bawah</b> — indikatornya bakal molor-nyambung kayak cairan.</div>
+   <div class="sec-desc">Ini yang udah <b>diimplementasi ke APK</b> — nav pill dengan indikator pink yang <b>meluncur + meregang</b> saat pindah tab, <b>bisa di-drag</b>, dan pas dilepas <b>snap ke tab terdekat</b> (gak pernah berhenti di tengah). <b>Coba klik atau drag pill-nya</b> di bawah.</div>
    <div class="sec-body" style="justify-content:center">
-     <div style="display:flex;flex-direction:column;gap:26px;align-items:center;width:100%">
-
-       <!-- interactive phone -->
-       <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;align-items:flex-start">
-         <div class="pcol">
-           <div class="phone" style="height:560px;background:linear-gradient(180deg,#F2F8F4,#FDFDFB 50%,#FBF7F0)">
-             ${statusbar()}
-             <div class="pbody">
-               <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(false)}</div>
-               <div id="lg-content" style="flex:1;margin:0 14px;border-radius:22px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;display:flex;align-items:flex-end">
-                 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))"></div>
-                 <div id="lg-content-label" style="position:relative;padding:16px;color:#fff;font-family:var(--disp);font-weight:800;font-size:24px">Discover</div>
-               </div>
-               <!-- LIQUID GLASS NAV -->
-               <div id="lg-nav-wrap" style="margin:10px 14px 14px;position:relative;height:60px;user-select:none;touch-action:none">
-                 <!-- frosted glass base -->
-                 <div style="position:absolute;inset:0;background:rgba(255,255,255,.55);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(255,255,255,.7);border-radius:26px;box-shadow:0 8px 30px rgba(23,49,44,.14),inset 0 1px 1px rgba(255,255,255,.9)"></div>
-                 <!-- gooey layer (SVG filter) -->
-                 <div id="lg-goo" style="position:absolute;inset:0;filter:url(#gooey);pointer-events:none">
-                   <div id="lg-indicator" style="position:absolute;top:8px;left:8px;height:44px;width:78px;background:var(--hot);border-radius:22px"></div>
-                 </div>
-                 <!-- tab buttons -->
-                 <div id="lg-tabs" style="position:absolute;inset:0;display:flex;align-items:center">
-                   <div class="lg-tab" data-i="explore" data-label="Discover" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:#fff;z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('explore')}</span><span class="lg-tab-txt">Discover</span></div>
-                   <div class="lg-tab" data-i="sparkle" data-label="Sparks" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('sparkle')}</span><span class="lg-tab-txt" style="display:none">Sparks</span></div>
-                   <div class="lg-tab" data-i="chat" data-label="Chats" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('chat')}</span><span class="lg-tab-txt" style="display:none">Chats</span></div>
-                   <div class="lg-tab" data-i="cart" data-label="Store" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('cart')}</span><span class="lg-tab-txt" style="display:none">Store</span></div>
-                 </div>
+     <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;align-items:flex-start">
+       <div class="pcol">
+         <div class="phone" style="height:560px;background:linear-gradient(180deg,#F2F8F4,#FDFDFB 50%,#FBF7F0)">
+           ${statusbar()}
+           <div class="pbody">
+             <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(false)}</div>
+             <div id="lg-content" style="flex:1;margin:0 14px;border-radius:22px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;display:flex;align-items:flex-end">
+               <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))"></div>
+               <div id="lg-content-label" style="position:relative;padding:16px;color:#fff;font-family:var(--disp);font-weight:800;font-size:24px">Discover</div>
+             </div>
+             <!-- LIQUID GLASS NAV -->
+             <div id="lg-nav-wrap" style="margin:10px 14px 14px;position:relative;height:60px;user-select:none;touch-action:none;border-radius:26px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(23,49,44,.06);box-shadow:0 8px 30px rgba(23,49,44,.14)">
+               <!-- sliding indicator -->
+               <div id="lg-indicator" style="position:absolute;top:8px;left:8px;height:44px;width:78px;background:var(--hotpale);border-radius:22px;will-change:left,width"></div>
+               <!-- tab buttons -->
+               <div id="lg-tabs" style="position:absolute;inset:0;display:flex;align-items:center;padding:0 8px">
+                 <div class="lg-tab" data-i="explore" data-label="Discover" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--hot);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('explore')}</span><span class="lg-tab-txt">Discover</span></div>
+                 <div class="lg-tab" data-i="sparkle" data-label="Sparks" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('sparkle')}</span><span class="lg-tab-txt" style="display:none">Sparks</span></div>
+                 <div class="lg-tab" data-i="chat" data-label="Chats" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('chat')}</span><span class="lg-tab-txt" style="display:none">Chats</span></div>
+                 <div class="lg-tab" data-i="cart" data-label="Store" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('cart')}</span><span class="lg-tab-txt" style="display:none">Store</span></div>
                </div>
              </div>
            </div>
-           <div class="plabel">👆 Klik / drag tab-nya</div>
          </div>
-
-         <div class="changes" style="max-width:340px">
-           <h3>Cara Kerja Efeknya</h3>
-           <ul>
-             <li><b>Meregang (gooey):</b> pas pindah tab, indikator molor-nyambung ke tujuan pakai SVG filter (blur + contrast) — kayak dua tetes cairan yang nyatu.</li>
-             <li><b>Bisa di-drag:</b> tekan & geser indikator; pas dilepas dia "snap" ke tab terdekat.</li>
-             <li><b>Frosted glass:</b> background nav blur tembus-pandang (backdrop-filter) — konten di belakang keliatan buram.</li>
-             <li><b>Label aktif:</b> cuma tab aktif yang nunjukin teks (ikut meregang), sisanya ikon aja.</li>
-           </ul>
-           <h3 style="margin-top:16px">Rencana di APK</h3>
-           <ul>
-             <li>Android <b>12+ (API 31)</b>: blur asli via <span class="tag">Modifier.blur</span> / RenderEffect.</li>
-             <li>Di bawahnya: <b>fallback</b> semi-transparan (tanpa blur) — gak nge-lag.</li>
-             <li>Efek molor pakai <b>animasi shape</b> (animateDpAsState) antar posisi tab.</li>
-           </ul>
-         </div>
+         <div class="plabel">👆 Klik / drag pill-nya</div>
        </div>
 
+       <div class="changes" style="max-width:340px">
+         <h3>Cara Kerja (di APK)</h3>
+         <ul>
+           <li><b>Meluncur + meregang:</b> pill pindah antar tab pakai <span class="tag">Animatable</span> (posisi + lebar). Makin jauh jaraknya, makin panjang pill-nya saat jalan — efek "liquid".</li>
+           <li><b>Bisa di-drag:</b> tekan & geser pill; makin ditarik makin melar. Pas dilepas <b>snap ke tab terdekat</b>.</li>
+           <li><b>Gak berhenti di tengah:</b> <span class="tag">onDragEnd</span> selalu ngitung tab terdekat & animasi ke situ.</li>
+           <li><b>Label aktif:</b> cuma tab aktif yang nunjukin teks, sisanya ikon aja.</li>
+         </ul>
+         <h3 style="margin-top:16px">Graceful Degradation</h3>
+         <ul>
+           <li>Android <b>12+ (API 31)</b>: layer blur (<span class="tag">Modifier.blur</span>) buat kesan frosted.</li>
+           <li>Di bawahnya: <b>fallback</b> surface semi-transparan (tanpa blur) — gak nge-lag.</li>
+           <li>Warna adaptif light/dark (pakai token dinamis).</li>
+         </ul>
+       </div>
      </div>
    </div>
  </div>`;
 
-/* SVG gooey filter (shared) */
-const svgNS='http://www.w3.org/2000/svg';
-const svg=document.createElementNS(svgNS,'svg');
-svg.setAttribute('style','position:absolute;width:0;height:0');
-svg.innerHTML='<defs><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs>';
-document.body.appendChild(svg);
-
-/* interactivity: click + drag with gooey stretch */
+/* interactivity: click + drag with clean stretch, snap-to-tab */
 (function(){
  const wrap=document.getElementById('lg-nav-wrap');
  const ind=document.getElementById('lg-indicator');
  const tabs=Array.from(document.querySelectorAll('.lg-tab'));
- const PAD=8, H=44;
- let active=0, dragging=false, startX=0, curX=0;
+ const PAD=8;
+ const REST_W=78;
+ let active=0, dragging=false, startX=0, wasDragged=false;
 
- function tabRect(i){const w=(wrap.clientWidth-PAD*2)/tabs.length;return {x:PAD+i*w, w:w};}
- // indicator "resting" uses a pill sized to active tab's label width feel
- function setIndicator(x,w){ind.style.left=x+'px';ind.style.width=w+'px';}
- function restWidth(){return 78;} // active pill width
+ function slotCenter(i){const inner=wrap.clientWidth-PAD*2;const slot=inner/tabs.length;return PAD+slot*i+slot/2;}
+ function setInd(cx,w){ind.style.left=(cx-w/2)+'px';ind.style.width=w+'px';}
 
  function activate(i,animate){
    active=i;
    tabs.forEach((t,idx)=>{
      const txt=t.querySelector('.lg-tab-txt');
-     t.style.color=idx===i?'#fff':'var(--subtle)';
+     t.style.color=idx===i?'var(--hot)':'var(--subtle)';
      txt.style.display=idx===i?'inline':'none';
    });
-   const r=tabRect(i);
-   const w=restWidth();
-   const cx=r.x + r.w/2;
-   if(animate){ind.style.transition='left .42s cubic-bezier(.68,-0.4,.32,1.4), width .42s cubic-bezier(.68,-0.4,.32,1.4)';}
-   else{ind.style.transition='none';}
-   setIndicator(cx - w/2, w);
-   // update big content bg label
+   ind.style.transition=animate?'left .40s cubic-bezier(.34,1.56,.5,1), width .40s cubic-bezier(.34,1.56,.5,1)':'none';
+   setInd(slotCenter(i),REST_W);
    document.getElementById('lg-content-label').textContent=tabs[i].dataset.label;
  }
 
- // click
- tabs.forEach((t,i)=>{
-   t.addEventListener('click',(e)=>{if(!wasDragged)activate(i,true);});
- });
+ tabs.forEach((t,i)=>t.addEventListener('click',()=>{if(!wasDragged)activate(i,true);}));
 
- // drag (pointer events)
- let wasDragged=false;
- function onDown(e){
-   dragging=true;wasDragged=false;
-   startX=(e.touches?e.touches[0].clientX:e.clientX);
-   ind.style.transition='none';
-   tabs.forEach(t=>t.style.cursor='grabbing');
- }
+ function onDown(e){dragging=true;wasDragged=false;startX=(e.touches?e.touches[0].clientX:e.clientX);ind.style.transition='none';tabs.forEach(t=>t.style.cursor='grabbing');}
  function onMove(e){
    if(!dragging)return;
    const px=(e.touches?e.touches[0].clientX:e.clientX);
-   const dx=px-startX;
-   if(Math.abs(dx)>4)wasDragged=true;
+   if(Math.abs(px-startX)>4)wasDragged=true;
    const rect=wrap.getBoundingClientRect();
-   let localX=px-rect.left;
-   localX=Math.max(PAD+restWidth()/2, Math.min(wrap.clientWidth-PAD-restWidth()/2, localX));
-   // stretch: widen indicator toward drag direction (gooey feel)
-   const r=tabRect(active);
-   const homeCx=r.x+r.w/2;
-   const stretch=Math.min(46, Math.abs(localX-homeCx)*0.7);
-   setIndicator(localX - (restWidth()+stretch)/2, restWidth()+stretch);
-   // live-highlight nearest tab
-   const w=(wrap.clientWidth-PAD*2)/tabs.length;
-   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((localX-PAD)/w)));
-   tabs.forEach((t,idx)=>{const txt=t.querySelector('.lg-tab-txt');t.style.color=idx===near?'#fff':'var(--subtle)';});
+   const minX=PAD+REST_W/2, maxX=wrap.clientWidth-PAD-REST_W/2;
+   let cx=Math.max(minX,Math.min(maxX,px-rect.left));
+   const home=slotCenter(active);
+   const stretch=Math.min(40,Math.abs(cx-home)*0.6);
+   setInd(cx,REST_W+stretch);
+   const inner=wrap.clientWidth-PAD*2, slot=inner/tabs.length;
+   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((cx-PAD)/slot)));
+   tabs.forEach((t,idx)=>t.style.color=idx===near?'var(--hot)':'var(--subtle)');
    if(e.cancelable)e.preventDefault();
  }
  function onUp(e){
-   if(!dragging)return;dragging=false;
-   tabs.forEach(t=>t.style.cursor='grab');
+   if(!dragging)return;dragging=false;tabs.forEach(t=>t.style.cursor='grab');
    const px=(e.changedTouches?e.changedTouches[0].clientX:e.clientX);
    const rect=wrap.getBoundingClientRect();
-   const localX=px-rect.left;
-   const w=(wrap.clientWidth-PAD*2)/tabs.length;
-   let near=Math.max(0,Math.min(tabs.length-1,Math.floor((localX-PAD)/w)));
+   const inner=wrap.clientWidth-PAD*2, slot=inner/tabs.length;
+   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((px-rect.left-PAD)/slot)));
    activate(near,true);
-   setTimeout(()=>{wasDragged=false;},50);
+   setTimeout(()=>{wasDragged=false;},60);
  }
- ind.parentElement.style.pointerEvents='none';
  wrap.addEventListener('pointerdown',onDown);
  window.addEventListener('pointermove',onMove);
  window.addEventListener('pointerup',onUp);
- // touch fallbacks
  wrap.addEventListener('touchstart',onDown,{passive:true});
  window.addEventListener('touchmove',onMove,{passive:false});
  window.addEventListener('touchend',onUp);
 
- // init after layout
- setTimeout(()=>activate(0,false),60);
+ setTimeout(()=>activate(0,false),80);
  window.addEventListener('resize',()=>activate(active,false));
 })();
 </script>

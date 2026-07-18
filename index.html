@@ -1,328 +1,509 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Found — design mockup</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Found — Semua Perubahan APK (Master)</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#FDFDFB;
-    --mist:#F1F5F2;
-    --mist-2:#E7EFEA;
-    --ink:#17312C;
-    --ink-soft:#4C6660;
-    --ink-faint:#8AA09A;
-    --pine:#0E6B5C;
-    --pine-deep:#0A4C42;
-    --rose:#F0567F;
-    --rose-deep:#D63E68;
-    --rose-pale:#FDE9EF;
-    --apricot:#FFB25E;
-    --apricot-deep:#B96F1E;
-    --apricot-pale:#FFF3E3;
-    --line:#E3E9E5;
-    --disp:'Bricolage Grotesque',sans-serif;
-    --body:'Figtree',sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#EDEBE4;font-family:var(--body);color:var(--ink);padding:48px 24px}
-  .intro{max-width:980px;margin:0 auto 36px}
-  .intro .logo{font-family:var(--disp);font-weight:800;font-size:44px;letter-spacing:-1.5px;color:var(--ink);display:inline-flex;align-items:center}
-  .intro .logo .ring-o{display:inline-block;width:30px;height:30px;border:4px solid var(--rose);border-radius:50%;margin:0 3px;transform:rotate(-8deg);position:relative;top:2px}
-  .intro p{color:var(--ink-soft);font-size:15px;margin-top:8px;max-width:640px;line-height:1.55}
-  .swatches{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-  .sw{display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--ink-soft)}
-  .sw i{display:block;width:64px;height:40px;border-radius:10px;border:1px solid rgba(0,0,0,.06);font-style:normal}
-  .frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;max-width:1900px;margin:0 auto}
-  .frame-wrap{display:flex;flex-direction:column;gap:10px;align-items:center}
-  .frame-label{font-size:12px;font-weight:600;color:var(--ink-soft);letter-spacing:.4px;text-transform:uppercase}
-  .phone{width:320px;height:660px;background:var(--paper);border-radius:38px;border:1px solid #D8D5CB;box-shadow:0 18px 40px rgba(23,49,44,.12);overflow:hidden;position:relative;display:flex;flex-direction:column}
-  .statusbar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;font-weight:600;color:var(--ink)}
-  .appbar{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 6px}
-  .appbar .wordmark{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.8px;display:inline-flex;align-items:center;color:var(--ink)}
-  .appbar .wordmark .ring-o{display:inline-block;width:14px;height:14px;border:2.6px solid var(--rose);border-radius:50%;margin:0 1.5px;transform:rotate(-8deg)}
-  .icnbtn{width:34px;height:34px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--pine)}
-  .bottomnav{margin-top:auto;display:flex;justify-content:space-around;align-items:center;padding:10px 8px 20px;border-top:1px solid var(--line);background:var(--paper)}
-  .navit{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--ink-faint);font-weight:600;position:relative}
-  .navit .glyph{width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;border-radius:50%}
-  .navit.active{color:var(--pine-deep)}
-  .navit.active .glyph{border:2.4px solid var(--rose);transform:rotate(-6deg)}
-  .navit.active .glyph span{transform:rotate(6deg)}
+:root{
+ --paper:#FDFDFB;--mist:#F1F5F2;--ink:#17312C;--muted:#4C6660;--subtle:#7E938D;--faint:#ADBFB8;
+ --hot:#FF2E93;--hotdeep:#E01578;--hotpale:#FFD9EC;--hottext:#C30F63;--hotglow:rgba(255,46,147,.2);
+ --apricot:#FFB25E;--apricotdeep:#C77A24;--apricottext:#8A5312;--apricotpale:#FFF3E3;
+ --teal:#0E6B5C;--tealdeep:#0A4C42;--pinedeep:#0A4C42;--coral:#F2795E;
+ --line:#E3E9E5;--success:#2FBF8F;--danger:#E8504B;
+ --disp:'Bricolage Grotesque',sans-serif;--body:'Figtree',sans-serif;
+ /* dark tokens */
+ --d-bg:#0C1210;--d-surface:#141B18;--d-surfacevar:#1B2420;--d-card:#222C27;--d-border:rgba(255,255,255,.08);
+ --d-fg:#F2F6F3;--d-fgmuted:#A3B2AC;--d-fgsubtle:#6E7D77;--d-fgfaint:#4C5A54;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#E7E4DC;font-family:var(--body);color:var(--ink);line-height:1.5}
 
-  .disco-card{margin:6px 14px 0;border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line);flex:1;display:flex;flex-direction:column;max-height:452px}
-  .photo{flex:1;position:relative;background:
-      radial-gradient(120px 120px at 70% 25%, #FFD9A8 0%, transparent 70%),
-      radial-gradient(160px 200px at 30% 70%, #F6A7BE 0%, transparent 75%),
-      linear-gradient(160deg,#F3E4D3 0%,#E4C6D0 55%,#C9DED4 100%)}
-  .photo .tagline{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--pine-deep);display:flex;align-items:center;gap:5px}
-  .photo .silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:190px;height:230px;border-radius:110px 110px 0 0;background:linear-gradient(180deg,#B98D74,#8E6650)}
-  .photo .silhouette::before{content:"";position:absolute;top:-58px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:#B98D74}
-  .disco-info{padding:14px 16px 12px;background:#fff}
-  .disco-name{font-family:var(--disp);font-weight:700;font-size:24px;letter-spacing:-.6px;display:flex;align-items:center;gap:8px}
-  .badge-prem{width:20px;height:20px;border-radius:50%;border:2.4px solid var(--pine);display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:var(--pine);font-weight:800}
-  .disco-meta{display:flex;gap:14px;margin-top:5px;font-size:12.5px;color:var(--ink-soft);font-weight:500}
-  .disco-meta b{color:var(--rose-deep);font-weight:700}
-  .chips{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-  .chip{background:var(--mist);color:var(--pine-deep);font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px}
-  .disco-actions{display:flex;justify-content:center;gap:22px;padding:12px 0 6px}
-  .act{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
-  .act.pass{background:#fff;border:1.6px solid var(--line);color:var(--ink-faint)}
-  .act.like{background:var(--rose);color:#fff;box-shadow:0 8px 18px rgba(240,86,127,.35);position:relative}
-  .act.like::after{content:"";position:absolute;inset:-7px;border:2.4px solid var(--rose);border-radius:50%;opacity:.45;transform:rotate(-8deg)}
-  .act-label{font-size:10px;font-weight:700;color:var(--ink-faint);text-align:center;margin-top:4px;letter-spacing:.6px}
+/* ===== TOP BAR / HEADER ===== */
+.masthead{background:linear-gradient(135deg,#3D1D3A,#7A2551 55%,var(--hotdeep));color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.masthead .ringdeco{position:absolute;top:-60px;right:8%;width:200px;height:200px;border:16px solid rgba(255,255,255,.1);border-radius:50%;transform:rotate(-8deg)}
+.masthead .ringdeco2{position:absolute;bottom:-70px;left:6%;width:150px;height:150px;border:12px solid rgba(255,46,147,.35);border-radius:50%;transform:rotate(12deg)}
+.masthead .wm{font-family:var(--disp);font-weight:800;font-size:52px;letter-spacing:-2px;display:inline-flex;align-items:center;gap:2px}
+.masthead .wm .ring{width:38px;height:38px;border:5px solid #fff;border-radius:50%;transform:rotate(-8deg);display:inline-block;margin:0 2px}
+.masthead h1{font-size:16px;font-weight:600;opacity:.9;margin-top:12px;letter-spacing:.5px;position:relative}
+.masthead .sub{font-size:13px;opacity:.7;margin-top:6px;max-width:560px;margin-left:auto;margin-right:auto;position:relative}
+.masthead .pill{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;margin-top:16px;position:relative}
 
-  .match-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;text-align:center}
-  .pair{position:relative;width:230px;height:150px;margin-bottom:26px}
-  .avatar{width:112px;height:112px;border-radius:50%;position:absolute;top:19px;border:5px solid var(--paper)}
-  .avatar.a{left:0;background:linear-gradient(150deg,#F0B98F,#C97B57)}
-  .avatar.b{right:0;background:linear-gradient(150deg,#F2A9C1,#B96A8B)}
-  .pair .bigring{position:absolute;inset:-14px -22px;border:5px solid var(--rose);border-radius:52%;transform:rotate(-7deg)}
-  .pair .spark{position:absolute;top:-6px;right:6px;color:var(--apricot);font-size:22px;transform:rotate(15deg)}
-  .match-title{font-family:var(--disp);font-weight:800;font-size:34px;letter-spacing:-1.2px;line-height:1.05}
-  .match-title em{font-style:normal;color:var(--rose)}
-  .match-sub{color:var(--ink-soft);font-size:14px;margin-top:10px;line-height:1.5}
-  .btn{border-radius:999px;font-weight:700;font-family:var(--body);display:flex;align-items:center;justify-content:center;gap:8px}
-  .btn.primary{background:var(--rose);color:#fff;height:52px;width:100%;font-size:15px;box-shadow:0 10px 22px rgba(240,86,127,.3)}
-  .btn.ghost{background:transparent;color:var(--pine);height:46px;width:100%;font-size:14px}
-  .match-cta{width:100%;padding:26px 22px 30px;display:flex;flex-direction:column;gap:6px}
+/* ===== TOC ===== */
+.toc{max-width:960px;margin:-24px auto 0;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(23,49,44,.12);padding:24px 28px;position:relative;z-index:5}
+.toc h2{font-family:var(--disp);font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;counter-reset:toc;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+.toc li{counter-increment:toc;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.toc li::before{content:counter(toc);background:var(--hotpale);color:var(--hottext);font-weight:800;font-size:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toc a{color:var(--ink);text-decoration:none;font-weight:600}
+.toc a:hover{color:var(--hot)}
 
-  .chat-head{display:flex;align-items:center;gap:10px;padding:8px 16px 10px;border-bottom:1px solid var(--line)}
-  .chat-ava{width:40px;height:40px;border-radius:50%;background:linear-gradient(150deg,#F2A9C1,#B96A8B);position:relative}
-  .chat-ava::after{content:"";position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#2FBF8F;border:2px solid var(--paper)}
-  .chat-name{font-family:var(--disp);font-weight:700;font-size:17px;display:flex;align-items:center;gap:6px}
-  .chat-sub{font-size:11px;color:var(--ink-faint);font-weight:500}
-  .lovelevel{margin-left:auto;display:flex;flex-direction:column;align-items:center;gap:2px}
-  .lovelevel .lring{width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--rose) 0 65%, var(--mist-2) 65% 100%);display:flex;align-items:center;justify-content:center}
-  .lovelevel .lring i{width:22px;height:22px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:10px}
-  .lovelevel span{font-size:8.5px;font-weight:700;color:var(--rose-deep);letter-spacing:.3px}
-  .chat-scroll{flex:1;padding:14px 14px 8px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
-  .bub{max-width:78%;padding:10px 14px;font-size:13.5px;line-height:1.45;font-weight:500}
-  .bub.in{align-self:flex-start;background:var(--mist);color:var(--ink);border-radius:4px 20px 20px 20px}
-  .bub.out{align-self:flex-end;background:var(--pine);color:#fff;border-radius:20px 4px 20px 20px}
-  .stamp{font-size:9.5px;color:var(--ink-faint);font-weight:600;margin-top:-4px}
-  .stamp.r{align-self:flex-end}
-  .gift-card{align-self:flex-start;background:var(--apricot-pale);border:1px solid #F5D9AE;border-radius:8px 20px 20px 20px;padding:10px 14px;display:flex;gap:10px;align-items:center;max-width:82%}
-  .gift-ic{width:38px;height:38px;border-radius:12px;background:var(--apricot);display:flex;align-items:center;justify-content:center;font-size:18px}
-  .gift-t{font-size:12.5px;font-weight:700;color:var(--apricot-deep)}
-  .gift-s{font-size:11px;color:#9A6B2B;font-weight:500}
-  .paywall-bar{margin:0 14px 10px;background:var(--rose-pale);border:1px solid #F7C6D4;border-radius:18px;padding:11px 14px;display:flex;align-items:center;gap:10px}
-  .paywall-bar .txt{flex:1}
-  .paywall-bar .t1{font-size:12.5px;font-weight:700;color:var(--rose-deep)}
-  .paywall-bar .t2{font-size:11px;color:#B4587A;font-weight:500}
-  .minibtn{background:var(--rose);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:8px 14px}
-  .composer{display:flex;align-items:center;gap:8px;padding:8px 14px 22px}
-  .composer .field{flex:1;height:44px;background:var(--mist);border-radius:999px;display:flex;align-items:center;padding:0 16px;color:var(--ink-faint);font-size:13px;font-weight:500}
-  .composer .send{width:44px;height:44px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px}
+/* ===== SECTION ===== */
+.sec{max-width:1080px;margin:56px auto 0;padding:0 24px}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.sec-num{font-family:var(--disp);font-weight:800;font-size:40px;color:var(--hotpale);line-height:1}
+.sec-h h2{font-family:var(--disp);font-weight:800;font-size:28px;letter-spacing:-.5px}
+.sec-desc{color:var(--muted);font-size:14px;max-width:680px;margin-bottom:22px;padding-left:54px}
+.sec-body{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+.changes{flex:1;min-width:280px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.changes h3{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--hottext);margin-bottom:12px}
+.changes ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.changes li{font-size:13.5px;color:var(--ink);padding-left:22px;position:relative;line-height:1.45}
+.changes li::before{content:"→";position:absolute;left:0;color:var(--hot);font-weight:800}
+.changes .old{color:var(--danger);font-weight:600}
+.changes .new{color:var(--success);font-weight:600}
+.changes .tag{display:inline-block;background:var(--mist);border-radius:6px;padding:1px 6px;font-size:11px;font-family:monospace;color:var(--muted)}
 
-  .store-hero{margin:8px 16px 4px;background:var(--pine);border-radius:24px;padding:18px;color:#fff;position:relative;overflow:hidden}
-  .store-hero::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border:10px solid rgba(255,255,255,.14);border-radius:50%;transform:rotate(-8deg)}
-  .store-hero .h1{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:-.6px}
-  .store-hero .h2{font-size:12px;opacity:.85;margin-top:4px;font-weight:500}
-  .store-hero .bal{margin-top:12px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
-  .coin{width:18px;height:18px;border-radius:50%;background:var(--apricot);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#7A4A0E;font-weight:800}
-  .packs{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px}
-  .pack{background:#fff;border:1.4px solid var(--line);border-radius:20px;padding:13px 12px;text-align:center;position:relative}
-  .pack.best{border-color:var(--rose)}
-  .pack .flag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--rose);color:#fff;font-size:9px;font-weight:800;letter-spacing:.5px;border-radius:999px;padding:3px 9px}
-  .pack .amt{font-family:var(--disp);font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;gap:6px}
-  .pack .prc{font-size:12px;color:var(--ink-soft);font-weight:600;margin-top:3px}
-  .pack .buy{margin-top:9px;background:var(--rose);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:7px 0}
-  .pack.alt .buy{background:var(--mist);color:var(--pine-deep)}
-  .subrow{margin:2px 16px 0;background:var(--apricot-pale);border:1px solid #F5D9AE;border-radius:20px;padding:13px 14px;display:flex;align-items:center;gap:11px}
-  .subrow .pp{width:38px;height:38px;border-radius:50%;border:3px solid var(--apricot);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--apricot-deep);font-weight:800}
-  .subrow .st1{font-size:13px;font-weight:700;color:var(--apricot-deep)}
-  .subrow .st2{font-size:11px;color:#9A6B2B;font-weight:500}
+/* phones container */
+.phones{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.pcol{display:flex;flex-direction:column;gap:8px;align-items:center}
+.plabel{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.phone{width:300px;height:600px;background:var(--paper);border-radius:32px;border:1px solid #D8D5CB;box-shadow:0 14px 34px rgba(23,49,44,.14);overflow:hidden;display:flex;flex-direction:column;color:var(--ink)}
+.phone.dark{background:var(--d-bg);color:var(--d-fg);border-color:#2a2a2a}
+.sb{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:10px;font-weight:600;flex-shrink:0}
+.icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
+.pbody{flex:1;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.scroll-note{font-size:11px;color:var(--subtle);text-align:center;font-style:italic}
 
-  .prof-hero{display:flex;flex-direction:column;align-items:center;padding:14px 0 6px}
-  .prof-ava{width:104px;height:104px;border-radius:50%;background:linear-gradient(150deg,#F0B98F,#C97B57);position:relative}
-  .prof-ava .edit{position:absolute;right:-2px;bottom:2px;width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;border:3px solid var(--paper)}
-  .prof-name{font-family:var(--disp);font-weight:800;font-size:24px;letter-spacing:-.7px;margin-top:10px;display:flex;align-items:center;gap:7px}
-  .prof-loc{font-size:12.5px;color:var(--ink-soft);font-weight:500;margin-top:3px}
-  .prof-stats{display:flex;gap:8px;padding:14px 16px 4px}
-  .pstat{flex:1;background:var(--mist);border-radius:18px;padding:11px 8px;text-align:center}
-  .pstat .n{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--pine-deep)}
-  .pstat .l{font-size:10px;color:var(--ink-soft);font-weight:600;margin-top:2px}
-  .fieldrow{margin:8px 16px 0;background:#fff;border:1.4px solid var(--line);border-radius:18px;padding:12px 14px}
-  .fieldrow .fl{font-size:10.5px;font-weight:700;color:var(--ink-faint);letter-spacing:.5px;text-transform:uppercase}
-  .fieldrow .fv{font-size:14px;font-weight:600;margin-top:3px}
-  .fieldrow.hint{border-color:#F7C6D4;background:var(--rose-pale)}
-  .fieldrow.hint .fv{color:var(--rose-deep)}
-  .fieldrow.hint .fh{font-size:11px;color:#B4587A;font-weight:500;margin-top:4px;line-height:1.4}
+/* wordmark reusable */
+.wm-inline{font-family:var(--disp);font-weight:800;display:inline-flex;align-items:center;gap:1px}
+.wm-inline .ring{border:2.5px solid var(--hot);border-radius:50%;transform:rotate(-8deg);display:inline-block;margin:0 1px}
+
+/* buttons */
+.btn-primary{background:var(--hot);color:#fff;border-radius:16px;padding:14px;text-align:center;font-weight:700;font-size:14px}
+.btn-secondary{background:var(--hotpale);color:var(--hottext);border:1.5px solid var(--hot);border-radius:16px;padding:13px;text-align:center;font-weight:700;font-size:14px}
+
+/* ===== FOOTER ===== */
+.footer{max-width:1080px;margin:72px auto 0;padding:40px 24px 60px;text-align:center;border-top:2px solid var(--line)}
+.footer .wm{font-family:var(--disp);font-weight:800;font-size:28px;display:inline-flex;align-items:center;gap:2px;color:var(--ink)}
+.footer .wm .ring{width:20px;height:20px;border:3px solid var(--hot);border-radius:50%;transform:rotate(-8deg);display:inline-block;margin:0 1px}
+.footer p{color:var(--muted);font-size:13px;margin-top:10px}
+.footer .meta{color:var(--faint);font-size:12px;margin-top:20px}
+
+/* dark-token helper classes for phone internals */
+.dark .d-surface{background:var(--d-surface) !important}
+.dark .d-surfacevar{background:var(--d-surfacevar) !important}
+.dark .d-fg{color:var(--d-fg) !important}
+.dark .d-fgmuted{color:var(--d-fgmuted) !important}
+.dark .d-border{border-color:var(--d-border) !important}
+
+@media(max-width:900px){.toc ol{grid-template-columns:1fr}.sec-body{flex-direction:column}}
 </style>
-</head>
-<body>
+<script>
+const ICONS={
+ explore:'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6z',
+ sparkle:'M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6z',
+ chat:'M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z',
+ cart:'M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.3 2.4c-.2.3-.3.7-.3 1 0 1.1.9 2 2 2h12v-2H7.4l.9-1.7h7.4c.7 0 1.4-.4 1.7-1l3.6-6.5c.2-.4-.1-1-.6-1H5.2L4.3 2H1z',
+ person:'M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z',
+ close:'M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19z',
+ check:'M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z',
+ send:'M2 21l21-9L2 3v7l15 2-15 2z',
+ pin:'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z',
+ moon:'M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 01-4.4 2.26 5.4 5.4 0 01-5.4-5.4c0-1.81.9-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z',
+ shield:'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z',
+ bell:'M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5S10.5 3.17 10.5 4v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1z',
+ chevron:'M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6z',
+ lock:'M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z',
+ work:'M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4z',
+ school:'M5 13.18v4L12 21l7-3.82v-4L12 17zM12 3L1 9l11 6 9-4.91V17h2V9z',
+ crown:'M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z',
+ search:'M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z',
+ photo:'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z',
+ add:'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z',
+ star:'M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6z',
+ gift:'M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 00-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z'
+};
+addEventListener('DOMContentLoaded',()=>document.querySelectorAll('[data-i]').forEach(e=>{const p=ICONS[e.dataset.i];if(p)e.innerHTML=`<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="${p}"/></svg>`;}));
+</script>
+</head><body>
 
-<div class="intro">
-  <div class="logo">f<span class="ring-o"></span>und</div>
-  <p><strong>Found</strong> — arah visual untuk client kedua. Siang hari, bukan senja: putih kertas, pine untuk struktur, rose untuk aksi, apricot untuk coin &amp; gift. Signature: <em>ring</em> — tanda lingkaran "gue nemuin lo", muncul di logo, tombol like, layar match, nav aktif, dan Love Level.</p>
-  <div class="swatches">
-    <div class="sw"><i style="background:#FDFDFB"></i>Paper FDFDFB</div>
-    <div class="sw"><i style="background:#F1F5F2"></i>Mist F1F5F2</div>
-    <div class="sw"><i style="background:#17312C"></i>Ink 17312C</div>
-    <div class="sw"><i style="background:#0E6B5C"></i>Pine 0E6B5C</div>
-    <div class="sw"><i style="background:#F0567F"></i>Rose F0567F</div>
-    <div class="sw"><i style="background:#FFB25E"></i>Apricot FFB25E</div>
-  </div>
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="ringdeco"></div><div class="ringdeco2"></div>
+  <div class="wm">f<span class="ring"></span>und</div>
+  <h1>SEMUA PERUBAHAN APK — REBRAND & RELAYOUT</h1>
+  <div class="sub">Dokumentasi visual lengkap: dari fork AfterGlow → Found. Setiap layar direlayout (bukan cuma ganti warna), rebrand "pink stabilo", basmi PII, sampai dark mode.</div>
+  <div class="pill">com.found.app · Theme: Daylight + Dark</div>
 </div>
 
-<div class="frames">
-
-  <div class="frame-wrap">
-    <div class="phone">
-      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
-      <div class="appbar">
-        <span class="wordmark">f<span class="ring-o"></span>und</span>
-        <div style="display:flex;gap:8px"><div class="icnbtn">⚲</div><div class="icnbtn">⚙</div></div>
-      </div>
-      <div class="disco-card">
-        <div class="photo">
-          <div class="tagline"><span style="width:8px;height:8px;border-radius:50%;background:#2FBF8F;display:inline-block"></span>Active now</div>
-          <div class="silhouette"></div>
-        </div>
-        <div class="disco-info">
-          <div class="disco-name">Kayla, 24 <span class="badge-prem">✓</span></div>
-          <div class="disco-meta"><span><b>◎</b> 3 mi away</span><span>Austin, TX</span></div>
-          <div class="chips"><span class="chip">Coffee</span><span class="chip">Hiking</span><span class="chip">Live music</span></div>
-        </div>
-      </div>
-      <div class="disco-actions">
-        <div><div class="act pass">✕</div><div class="act-label">PASS</div></div>
-        <div><div class="act like">✓</div><div class="act-label">FOUND</div></div>
-      </div>
-      <div class="bottomnav">
-        <div class="navit active"><div class="glyph"><span>◈</span></div>Discover</div>
-        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
-        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
-        <div class="navit"><div class="glyph"><span>◉</span></div>Profile</div>
-      </div>
-    </div>
-    <div class="frame-label">Discovery</div>
-  </div>
-
-  <div class="frame-wrap">
-    <div class="phone">
-      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
-      <div class="match-body">
-        <div class="pair">
-          <div class="avatar a"></div>
-          <div class="avatar b"></div>
-          <div class="bigring"></div>
-          <div class="spark">✦</div>
-        </div>
-        <div class="match-title">You <em>found</em><br>each other</div>
-        <div class="match-sub">Kayla circled you back. Say something before the moment cools off.</div>
-      </div>
-      <div class="match-cta">
-        <div class="btn primary">Say hi to Kayla</div>
-        <div class="btn ghost">Keep discovering</div>
-      </div>
-    </div>
-    <div class="frame-label">Match — "Found"</div>
-  </div>
-
-  <div class="frame-wrap">
-    <div class="phone">
-      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
-      <div class="chat-head">
-        <div class="chat-ava"></div>
-        <div>
-          <div class="chat-name">Kayla <span class="badge-prem" style="width:16px;height:16px;font-size:8px">✓</span></div>
-          <div class="chat-sub">9:12 PM her time · Austin</div>
-        </div>
-        <div class="lovelevel"><div class="lring"><i>🔥</i></div><span>BURNING</span></div>
-      </div>
-      <div class="chat-scroll">
-        <div class="bub in">okay but you can't just say you make the best pancakes and not prove it 🥞</div>
-        <div class="bub out">bold of you to assume I don't have receipts. Sunday. Your move.</div>
-        <div class="stamp r">Read 9:14 PM</div>
-        <div class="gift-card">
-          <div class="gift-ic">🧸</div>
-          <div><div class="gift-t">Kayla sent you a Teddy</div><div class="gift-s">+15 love points · Burning 65%</div></div>
-        </div>
-        <div class="bub in">a little something while you think about those pancakes 😌</div>
-      </div>
-      <div class="paywall-bar">
-        <div class="txt"><div class="t1">Free chats used up</div><div class="t2">Top up coins to keep this going</div></div>
-        <div class="minibtn">Get coins</div>
-      </div>
-      <div class="composer">
-        <div class="field">Message Kayla…</div>
-        <div class="send">➤</div>
-      </div>
-    </div>
-    <div class="frame-label">Chat + gift + paywall</div>
-  </div>
-
-  <div class="frame-wrap">
-    <div class="phone">
-      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
-      <div class="appbar"><span style="font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.5px">Coins &amp; plans</span><div class="icnbtn">✕</div></div>
-      <div class="store-hero">
-        <div class="h1">Keep the spark going</div>
-        <div class="h2">Coins unlock chats, gifts, and photos</div>
-        <div class="bal"><span class="coin">c</span> 120 coins</div>
-      </div>
-      <div class="packs">
-        <div class="pack alt"><div class="amt"><span class="coin">c</span>100</div><div class="prc">Rp40.000</div><div class="buy">Buy</div></div>
-        <div class="pack best"><div class="flag">POPULAR</div><div class="amt"><span class="coin">c</span>525</div><div class="prc">Rp179.000</div><div class="buy">Buy</div></div>
-        <div class="pack alt"><div class="amt"><span class="coin">c</span>1.050</div><div class="prc">Rp329.000</div><div class="buy">Buy</div></div>
-        <div class="pack alt"><div class="amt"><span class="coin">c</span>2.300</div><div class="prc">Rp649.000</div><div class="buy">Buy</div></div>
-      </div>
-      <div class="subrow">
-        <div class="pp">+</div>
-        <div style="flex:1"><div class="st1">Premium+ · 3 months</div><div class="st2">Unlimited chat, voice notes, gold ring</div></div>
-        <div class="minibtn" style="background:var(--apricot);color:#5C3608">Rp599k</div>
-      </div>
-      <div class="bottomnav">
-        <div class="navit"><div class="glyph"><span>◈</span></div>Discover</div>
-        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
-        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
-        <div class="navit active"><div class="glyph"><span>◉</span></div>Profile</div>
-      </div>
-    </div>
-    <div class="frame-label">Coin store + Premium+</div>
-  </div>
-
-  <div class="frame-wrap">
-    <div class="phone">
-      <div class="statusbar"><span>9:41</span><span>▮▮▮ ᯤ</span></div>
-      <div class="appbar"><span style="font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.5px">Your profile</span><div class="icnbtn">⚙</div></div>
-      <div class="prof-hero">
-        <div class="prof-ava"><div class="edit">✎</div></div>
-        <div class="prof-name">Daniel, 27 <span class="badge-prem">✓</span></div>
-        <div class="prof-loc">Jakarta, Indonesia</div>
-      </div>
-      <div class="prof-stats">
-        <div class="pstat"><div class="n">12</div><div class="l">Found you</div></div>
-        <div class="pstat"><div class="n">4</div><div class="l">Matches</div></div>
-        <div class="pstat"><div class="n">120</div><div class="l">Coins</div></div>
-      </div>
-      <div class="fieldrow hint">
-        <div class="fl">Display name</div>
-        <div class="fv">********</div>
-        <div class="fh">Your name was hidden for safety. Choose a new one to keep chatting.</div>
-      </div>
-      <div class="fieldrow">
-        <div class="fl">Bio</div>
-        <div class="fv" style="font-weight:500;font-size:13px;line-height:1.45">Pancake scientist. Will trade hikes for good playlists.</div>
-      </div>
-      <div class="fieldrow">
-        <div class="fl">Interests</div>
-        <div class="chips" style="margin-top:6px"><span class="chip">Coffee</span><span class="chip">Gym</span><span class="chip">Movies</span></div>
-      </div>
-      <div class="bottomnav">
-        <div class="navit"><div class="glyph"><span>◈</span></div>Discover</div>
-        <div class="navit"><div class="glyph"><span>♡</span></div>Likes</div>
-        <div class="navit"><div class="glyph"><span>💬</span></div>Chats</div>
-        <div class="navit active"><div class="glyph"><span>◉</span></div>Profile</div>
-      </div>
-    </div>
-    <div class="frame-label">Profile (termasuk state nama disensor)</div>
-  </div>
-
+<!-- TOC -->
+<div class="toc">
+  <h2>Daftar Isi — Alur App</h2>
+  <ol>
+    <li><a href="#s1">Splash &amp; Age Gate</a></li>
+    <li><a href="#s2">Auth / Login</a></li>
+    <li><a href="#s3">Discovery (swipe)</a></li>
+    <li><a href="#s4">Sparks (dulu "Likes")</a></li>
+    <li><a href="#s5">Chat List</a></li>
+    <li><a href="#s6">Room Chat</a></li>
+    <li><a href="#s7">Coin Store</a></li>
+    <li><a href="#s8">Paywall &amp; Subscription</a></li>
+    <li><a href="#s9">Bottom Nav + Profile Avatar</a></li>
+    <li><a href="#s10">Profile (view sendiri)</a></li>
+    <li><a href="#s11">Lihat Profil Persona</a></li>
+    <li><a href="#s12">Dark Mode</a></li>
+  </ol>
 </div>
-</body>
-</html>
+
+<!-- SECTIONS INJECTED BELOW -->
+<div id="sections-root"></div>
+
+<script>
+/* ============ SECTION DATA + RENDERER ============ */
+function ico(name){const p=ICONS[name];return p?`<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="${p}"/></svg>`:'';}
+
+/* reusable phone-internal builders (return HTML strings) */
+function wm(size,ringColor){const r=Math.round(size*0.6);return `<span class="wm-inline" style="font-size:${size}px">f<span class="ring" style="width:${r}px;height:${r}px;border-color:${ringColor||'var(--hot)'}"></span>und</span>`;}
+function statusbar(){return `<div class="sb"><span>2:54</span><span>▮▮▮ ᯤ</span></div>`;}
+function navpill(active,dark){
+ const items=[['explore','Discover'],['sparkle','Sparks'],['chat','Chats'],['cart','Store']];
+ const surf=dark?'var(--d-surface)':'#fff';
+ const bd=dark?'1px solid var(--d-border)':'1px solid var(--line)';
+ let h=`<div style="margin:4px 12px 12px;background:${surf};border-radius:24px;box-shadow:0 8px 24px rgba(0,0,0,.15);border:${bd};padding:7px;display:flex;justify-content:space-between;gap:3px">`;
+ items.forEach(([ic,lb])=>{
+  if(lb===active){h+=`<div style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;background:var(--hotpale);border-radius:999px;padding:10px 4px;color:var(--hot)"><span>${ico(ic)}</span><span style="font-size:11px;font-weight:800;color:var(--hottext)">${lb}</span></div>`;}
+  else{const fg=dark?'var(--d-fgsubtle)':'var(--faint)';h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;color:${fg};padding:6px 0"><span>${ico(ic)}</span><span style="font-size:8.5px;font-weight:600">${lb}</span></div>`;}
+ });
+ return h+'</div>';
+}
+function avatar(dark){const sv=dark?'var(--d-surfacevar)':'var(--mist)';const fg=dark?'var(--d-fgsubtle)':'var(--subtle)';return `<div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--hot);padding:2px;background:${sv};display:flex;align-items:center;justify-content:center;color:${fg}">${ico('person')}</div>`;}
+
+const SECTIONS=[
+/* ---------- 1. SPLASH + AGE GATE ---------- */
+{id:'s1',num:'01',title:'Splash & Age Gate',
+ desc:'Layar pertama saat buka app. Wordmark diganti total dari "After Glow" ke "f◯und", welcome direstrukturisasi jadi editorial bottom-left di atas video.',
+ changes:[
+  ['old','"After Glow" wordmark','new','"f◯und" (ring pink stabilo gantiin huruf "o")'],
+  ['plain','Welcome text direstrukturisasi jadi editorial bottom-left di atas video intro'],
+  ['plain','Semua sisa teks "After Glow" dibasmi total di splash + age gate'],
+  ['plain','Age gate 18+ tetap wajib (hard content barrier)'],
+ ],
+ phones:[{label:'Age Gate',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody" style="background:linear-gradient(160deg,#3D1D3A,#7A2551 60%,var(--hotdeep));color:#fff;padding:0">
+    <div style="position:absolute;top:-40px;right:-30px;width:150px;height:150px;border:12px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
+    <div style="margin-top:70px;text-align:center">${wm(46,'#fff')}</div>
+    <div style="margin-top:auto;padding:24px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:8px">18+ ONLY</div>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:26px;line-height:1.1">Are you 18 or older?</h2>
+      <p style="font-size:13px;opacity:.8;margin:10px 0 20px">Found is an adult social space. You must be 18+ to continue.</p>
+      <div class="btn-primary" style="background:#fff;color:var(--hotdeep)">Yes, I'm 18 or older</div>
+      <div style="text-align:center;font-size:13px;opacity:.7;margin-top:14px;font-weight:600">Exit</div>
+    </div>
+  </div>`}]
+},
+/* ---------- 2. AUTH ---------- */
+{id:'s2',num:'02',title:'Auth / Login',
+ desc:'Direstrukturisasi ke "two-zone": header gradient hangat (plum→berry→rose) + kartu form putih naik dari bawah. Bukan lagi layout AfterGlow yang flat.',
+ changes:[
+  ['old','"AFTER GLOW" + layout flat','new','Two-zone: header gradient + form sheet card'],
+  ['plain','Header band gradient hangat (plum→berry→rose) di atas'],
+  ['plain','Form putih dengan sudut membulat (radius 30dp) naik dari bawah'],
+  ['plain','Tombol utama jadi squircle pink stabilo (dulu pill emas)'],
+  ['plain','Input field jadi outline style (border selalu keliatan, focus pink)'],
+ ],
+ phones:[{label:'Login',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody" style="padding:0">
+    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,#B83668);padding:40px 24px 60px;color:#fff;position:relative">
+      <div style="position:absolute;top:-30px;right:20px;width:110px;height:110px;border:10px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:30px;line-height:1.05">Welcome<br>to <span style="color:var(--apricot)">found</span></h2>
+      <p style="font-size:13px;opacity:.85;margin-top:8px">Real connections start here.</p>
+    </div>
+    <div style="background:#fff;border-radius:30px 30px 0 0;margin-top:-30px;padding:26px 22px;flex:1">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Email</div>
+      <div style="border:1.5px solid var(--line);border-radius:14px;padding:13px;color:var(--faint);font-size:14px;margin-bottom:14px">you@email.com</div>
+      <div class="btn-primary">Continue with email</div>
+      <div style="text-align:center;color:var(--subtle);font-size:12px;margin:14px 0">or</div>
+      <div class="btn-secondary">Continue with Google</div>
+    </div>
+  </div>`}]
+},
+/* ---------- 3. DISCOVERY ---------- */
+{id:'s3',num:'03',title:'Discovery (swipe)',
+ desc:'Kartu swipe direstrukturisasi: status online jadi pill kanan-atas, identitas jadi kartu frosted mengambang, tombol Pass ✕ + Found ✓. Header pakai wordmark f◯und + avatar.',
+ changes:[
+  ['plain','Header: wordmark f◯und kiri + avatar profil kanan (dulu "Recommended")'],
+  ['old','Identitas teks polos di atas gradient','new','Kartu frosted mengambang (card-in-card)'],
+  ['plain','Status online → pill kanan-atas; lokasi + progress bar jadi pink'],
+  ['plain','Tombol: Pass ✕ (outline) + Found ✓ (pink + ring signature)'],
+  ['plain','Match overlay: "You found each other" + ring (bukan confetti)'],
+ ],
+ phones:[{label:'Discovery',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(d)}</div>
+    <div style="flex:1;margin:0 14px;border-radius:22px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden">
+      <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,.35);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:999px">● Online</div>
+      <div style="position:absolute;bottom:14px;left:14px;right:14px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:16px;padding:12px 14px;color:#fff">
+        <div style="font-family:var(--disp);font-weight:800;font-size:22px">Kayla, 24</div>
+        <div style="font-size:12px;opacity:.9;display:flex;align-items:center;gap:4px">${ico('pin')} 3 miles away</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:50px;padding:16px 0">
+      <div style="width:58px;height:58px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--subtle)">${ico('close')}</div>
+      <div style="width:58px;height:58px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px var(--hotglow)">${ico('check')}</div>
+    </div>
+    ${navpill('Discover',d)}
+  </div>`}]
+},
+/* ---------- 4. SPARKS ---------- */
+{id:'s4',num:'04',title:'Sparks (dulu "Likes")',
+ desc:'Tab "Likes" diganti nama jadi "Sparks" (nyambung sparkle di logo, kerasa dating). Ikon jadi sparkle, mode "You sparked" / "Sparked you".',
+ changes:[
+  ['old','Tab "Likes" + ikon hati','new','Tab "Sparks" + ikon sparkle (AutoAwesome)'],
+  ['old','"You liked" / "Likes You"','new','"You sparked" / "Sparked you"'],
+  ['plain','Empty state: "No sparks yet" + ikon sparkle pink'],
+  ['plain','Popup "She likes you" → "Someone sparked you" + tombol "Spark back"'],
+  ['plain','Grid di-blur kalau belum Premium (unlock: see who sparked you)'],
+ ],
+ phones:[{label:'Sparks',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px"><h2 style="font-family:var(--disp);font-weight:800;font-size:22px;flex:1">Sparks</h2>${avatar(d)}</div>
+    <div style="display:flex;margin:0 16px 12px;background:var(--mist);border-radius:16px;padding:4px;font-size:12px;font-weight:700">
+      <div style="flex:1;text-align:center;padding:8px;color:var(--muted)">You sparked</div>
+      <div style="flex:1;text-align:center;padding:8px;background:var(--hot);color:#fff;border-radius:12px">Sparked you</div>
+    </div>
+    <div style="flex:1;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start">
+      ${[1,2,3,4].map(()=>`<div style="aspect-ratio:3/4;border-radius:16px;background:linear-gradient(150deg,#F3B79A,#8E6a86);position:relative"><div style="position:absolute;bottom:8px;left:8px;color:#fff;font-size:12px;font-weight:700">Maya, 26</div></div>`).join('')}
+    </div>
+    ${navpill('Sparks',d)}
+  </div>`}]
+},
+/* ---------- 5. CHAT LIST ---------- */
+{id:'s5',num:'05',title:'Chat List',
+ desc:'Chat unread jadi kartu pink mengambang + badge angka unread (baru). Divider garis dihapus → ritme kartu-vs-flat.',
+ changes:[
+  ['old','List rata + divider garis + tint merah samar','new','Kartu pink mengambang untuk unread'],
+  ['new','Badge angka unread pink ditambah (sebelumnya gak ada)'],
+  ['plain','Divider garis dihapus → tampilan kartu'],
+  ['plain','Semua aksen (waktu unread, avatar ring) → pink stabilo'],
+ ],
+ phones:[{label:'Chats',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px"><h2 style="font-family:var(--disp);font-weight:800;font-size:22px;flex:1">Chats</h2><span style="color:var(--subtle);margin-right:10px">${ico('search')}</span>${avatar(d)}</div>
+    <div style="flex:1;padding:6px 12px">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--hotpale);border-radius:18px;margin-bottom:6px">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(150deg,var(--hot),var(--teal))"></div>
+        <div style="flex:1"><div style="display:flex"><b style="flex:1;font-size:15px">Kayla</b><span style="font-size:11px;color:var(--hottext);font-weight:700">2m</span></div><div style="display:flex;align-items:center;gap:8px;margin-top:3px"><span style="flex:1;font-size:13px">omg you actually cooked??</span><span style="background:var(--hot);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:2px 7px">3</span></div></div>
+      </div>
+      ${['Maya','Jess'].map(n=>`<div style="display:flex;align-items:center;gap:12px;padding:12px"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(150deg,#F3B79A,#8E6a86)"></div><div style="flex:1"><div style="display:flex"><b style="flex:1;font-size:15px;font-weight:600">${n}</b><span style="font-size:11px;color:var(--subtle)">1h</span></div><div style="font-size:13px;color:var(--muted);margin-top:3px">see you saturday then!</div></div></div>`).join('')}
+    </div>
+    ${navpill('Chats',d)}
+  </div>`}]
+},
+/* ---------- 6. ROOM CHAT ---------- */
+{id:'s6',num:'06',title:'Room Chat',
+ desc:'Bubble keluar dari emas pucat → pink stabilo teks putih (signature paling kuat). Tombol kirim pink, system pill pink, gift bubble apricot.',
+ changes:[
+  ['old','Bubble keluar emas pucat (#FFF1D6)','new','Bubble keluar pink stabilo teks putih'],
+  ['plain','Bubble masuk tetap putih bersih (kontras enak)'],
+  ['old','Tombol kirim gradient emas','new','Tombol kirim pink stabilo'],
+  ['plain','System pill (TRIGGER/GUIDE) + read receipt → pink/putih'],
+  ['plain','Gift bubble → apricot (keluarga warna coin/gift)'],
+  ['plain','Preview reply media: emoji HP → ikon Material vektor'],
+ ],
+ phones:[{label:'Room Chat',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line)"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(150deg,var(--hot),var(--teal))"></div><div style="flex:1"><div style="font-family:var(--disp);font-weight:700;font-size:15px">Kayla</div><div style="font-size:10px;color:var(--subtle)">9:12 PM her time</div></div><div style="text-align:center"><div style="width:28px;height:28px;border-radius:50%;background:conic-gradient(var(--hot) 65%,var(--mist) 65%);display:flex;align-items:center;justify-content:center"><div style="width:20px;height:20px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">🔥</div></div><div style="font-size:7px;font-weight:700;color:var(--hot)">BURNING</div></div></div>
+    <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;background:#F7F4EE">
+      <div style="align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">you actually cooked?? 🥞</div>
+      <div style="align-self:flex-end;background:var(--hot);color:#fff;border-radius:16px 4px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">bold of you to assume I don't have receipts ✓✓</div>
+      <div style="align-self:flex-start;background:var(--apricotpale);border:1px solid #F5D9AE;border-radius:8px 18px 18px 18px;padding:10px 13px;display:flex;gap:10px;align-items:center;color:var(--apricottext);font-size:12px;font-weight:700"><span style="width:32px;height:32px;border-radius:10px;background:var(--apricot);display:flex;align-items:center;justify-content:center">${ico('gift')}</span> Kayla sent you a Teddy</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--line)"><div style="flex:1;height:42px;background:var(--mist);border-radius:999px;display:flex;align-items:center;padding:0 16px;color:var(--faint);font-size:13px">Message Kayla…</div><div style="width:44px;height:44px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center">${ico('send')}</div></div>
+  </div>`}]
+},
+/* ---------- 7. COIN STORE ---------- */
+{id:'s7',num:'07',title:'Coin Store',
+ desc:'Pemisahan warna sengaja: Store = apricot/emas (koin kan emas). Layout Concept B: featured pack card di atas + list rows (bukan grid 2 kolom AfterGlow).',
+ changes:[
+  ['plain','Warna Store = apricot/emas (dipisah sengaja dari pink app)'],
+  ['old','Grid 2 kolom (AfterGlow)','new','Featured pack card + list rows (Concept B)'],
+  ['plain','Hero apricot teks putih + ring dekoratif, copy "keep the spark going"'],
+  ['plain','Avatar profil di header kanan'],
+ ],
+ phones:[{label:'Coin Store',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px"><div><h2 style="font-family:var(--disp);font-weight:800;font-size:22px">Get coins</h2></div><div style="flex:1"></div>${avatar(d)}</div>
+    <div style="padding:0 16px;overflow:hidden">
+      <div style="background:linear-gradient(135deg,var(--apricot),#9A5A12);border-radius:22px;padding:18px;color:#fff;position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;margin-bottom:12px">
+        <div style="position:absolute;top:-30px;right:-30px;width:110px;height:110px;border:11px solid rgba(255,255,255,.16);border-radius:50%;transform:rotate(-8deg)"></div>
+        <div style="font-size:40px">💰</div>
+        <div><div style="font-size:10px;font-weight:800;letter-spacing:1px;opacity:.9">★ MOST POPULAR</div><div style="font-family:var(--disp);font-weight:800;font-size:26px;line-height:1">525 coins</div><div style="font-size:12px;opacity:.9">Save 15% · Rp179k</div><div style="margin-top:8px;background:#fff;color:var(--apricottext);font-size:12px;font-weight:800;padding:7px 15px;border-radius:999px;display:inline-block">Buy now</div></div>
+      </div>
+      <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;margin:8px 4px">More options</div>
+      ${[['100','Rp40k'],['1.050','Rp329k']].map(([a,p])=>`<div style="display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fff;border:1.4px solid var(--line);border-radius:16px;margin-bottom:8px"><div style="width:42px;height:42px;border-radius:12px;background:var(--apricotpale);display:flex;align-items:center;justify-content:center;font-size:20px">🪙</div><div style="flex:1"><div style="font-family:var(--disp);font-weight:800;font-size:18px;color:var(--apricottext)">${a}</div><div style="font-size:11px;color:var(--muted)">coins</div></div><div style="font-weight:800;font-size:15px">${p}</div></div>`).join('')}
+    </div>
+  </div>`}]
+},
+/* ---------- 8. PAYWALL ---------- */
+{id:'s8',num:'08',title:'Paywall & Subscription',
+ desc:'HANYA 2 perk yang beneran ada di kode (audit jujur, anti-takedown). Perks dipindah ke atas (jual value dulu). Ikon Material, bukan emoji.',
+ changes:[
+  ['new','Cuma janji 2 perk REAL: Unlimited messages + See who sparked you'],
+  ['old','"Get circled first / Top of Discover" (gak ada implementasi)','new','DIBUANG'],
+  ['old','"Premium ring badge" (badge Premium disembunyiin di kode)','new','DIBUANG'],
+  ['old','Voice notes, read receipts (itu Premium+ / gratis untuk semua)','new','DIBUANG'],
+  ['plain','Perks dipindah ke atas (jual value dulu, baru harga)'],
+  ['plain','Ikon Material vektor (bukan emoji HP)'],
+ ],
+ phones:[{label:'Paywall',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,var(--hotdeep));padding:22px 20px;color:#fff;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-30px;right:24px;width:110px;height:110px;border:10px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
+      <div style="position:absolute;top:12px;right:14px;color:rgba(255,255,255,.7)">${ico('close')}</div>
+      <div style="display:inline-block;background:var(--hot);font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px">PREMIUM</div>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:24px;margin-top:10px">Get found faster.</h2>
+      <p style="font-size:12px;opacity:.85;margin-top:6px">Chat without limits and see everyone who sparked you.</p>
+    </div>
+    <div style="padding:16px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px">
+        <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px">What Premium unlocks</div>
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0"><div style="width:38px;height:38px;border-radius:50%;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hot)">${ico('chat')}</div><div><b style="font-size:14px">Unlimited messages</b><div style="font-size:12px;color:var(--muted)">Chat as much as you want</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;padding:8px 0"><div style="width:38px;height:38px;border-radius:50%;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hotdeep)">${ico('sparkle')}</div><div><b style="font-size:14px">See who sparked you</b><div style="font-size:12px;color:var(--muted)">Unlock every profile</div></div></div>
+      </div>
+      <div style="margin-top:12px;border:2px solid var(--hot);background:var(--hotpale);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--hot);background:var(--hot)"></div><div style="flex:1"><b style="font-size:15px">3 Months Premium</b></div><b style="color:var(--hot)">Rp599k</b></div>
+      <div class="btn-primary" style="margin-top:12px">Activate 3 Months Premium</div>
+    </div>
+  </div>`}]
+},
+/* ---------- 9. NAV + AVATAR ---------- */
+{id:'s9',num:'09',title:'Bottom Nav + Profile Avatar',
+ desc:'Bottom nav dari bar full-width nempel tepi → floating pill 4 item. Profile keluar dari bar, jadi avatar bulat di pojok kanan atas (pola Snapchat/IG).',
+ changes:[
+  ['old','Bar putih full-width nempel tepi + shadow (AfterGlow)','new','Floating pill mengambang'],
+  ['plain','Item aktif = kapsul pink pale + teks; non-aktif = ikon + title kecil (semua kebaca)'],
+  ['old','Profile di bottom bar (5 item)','new','Profile → avatar pojok kanan atas (4 item)'],
+  ['plain','Avatar nampilin foto profil user (bukan Bitmoji — riset: itu produk gede Snapchat)'],
+ ],
+ phones:[{label:'Nav + Avatar',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(d)}</div>
+    <div style="flex:1;margin:0 14px;border-radius:22px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative"><div style="position:absolute;bottom:14px;left:16px;color:#fff"><div style="font-family:var(--disp);font-weight:800;font-size:22px">Kayla, 24</div></div></div>
+    <div style="display:flex;justify-content:center;gap:50px;padding:14px 0"><div style="width:56px;height:56px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--subtle)">${ico('close')}</div><div style="width:56px;height:56px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center">${ico('check')}</div></div>
+    ${navpill('Discover',d)}
+  </div>`}]
+},
+/* ---------- 10. PROFILE ---------- */
+{id:'s10',num:'10',title:'Profile (view sendiri)',
+ desc:'Hero cover gede + kartu Coins apricot. TANPA stat palsu — Love level itu per-room (bukan global), Sparks count gak ada di data. Cuma Coins yang beneran ada.',
+ changes:[
+  ['old','Kartu identitas kecil + list setting polos','new','Hero cover + grup setting berikon'],
+  ['old','Stat Love level / Sparks (SALAH — per-room / gak ada di data)','new','DIBUANG'],
+  ['new','Cuma Coins yang tampil (wallet.balance — beneran ada), kartu apricot + Top up'],
+  ['plain','Setting dikelompokin dalam kartu + ikon Material pink'],
+  ['new','Section "Appearance" dengan toggle Dark mode'],
+ ],
+ phones:[{label:'Profile',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="flex:1;padding:0 14px;overflow:hidden">
+      <div style="margin-top:8px;border-radius:24px;height:180px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.5))"></div>
+        <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;border:3px solid #fff;background:#B98D74"></div>
+        <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.9);color:var(--hotdeep);font-size:11px;font-weight:800;padding:6px 11px;border-radius:999px">Edit</div>
+        <div style="position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#fff"><div style="font-family:var(--disp);font-weight:800;font-size:20px">Alex, 27</div><div style="font-size:11px;opacity:.85">Bandar Lampung</div></div>
+      </div>
+      <div style="margin-top:12px;background:linear-gradient(135deg,var(--apricot),var(--apricotdeep));border-radius:18px;padding:14px;color:#fff;display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:20px">🪙</div><div><div style="font-size:10px;opacity:.85">Balance</div><div style="font-family:var(--disp);font-weight:800;font-size:20px">120 coins</div></div><div style="margin-left:auto;background:#fff;color:var(--apricottext);font-size:11px;font-weight:800;padding:8px 13px;border-radius:999px">Top up</div></div>
+      <div style="margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden">
+        <div style="font-size:11px;font-weight:800;color:var(--subtle);padding:12px 16px 4px">APPEARANCE</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:34px;height:34px;border-radius:10px;background:var(--hotpale);color:var(--hot);display:flex;align-items:center;justify-content:center">${ico('moon')}</div><div style="flex:1;font-weight:600;font-size:14px">Dark mode</div><div style="width:42px;height:24px;border-radius:999px;background:var(--faint);position:relative"><div style="position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+      </div>
+    </div>
+  </div>`}]
+},
+/* ---------- 11. VIEW PROFILE PERSONA ---------- */
+{id:'s11',num:'11',title:'Lihat Profil Persona',
+ desc:'Foto full-bleed + nama overlay + info sheet. PENTING: IG/Snap/kontak DIBUANG TOTAL — konsisten sama anti-PII (mask nomor, lock chat). Semua interaksi kepaksa di platform.',
+ changes:[
+  ['old','Foto kotak kecil + thumbnail + teks numpuk','new','Foto full-bleed + info sheet melengkung'],
+  ['plain','Nama + umur + jarak overlay di atas foto (scrim gelap)'],
+  ['plain','Quick facts (kerja/sekolah) ikon apricot, interest jadi chip pink'],
+  ['old','Chip "IG @xxx" / "Snap @xxx" ditampilkan','new','DIBUANG TOTAL (anti-PII)'],
+  ['new','Field input IG/Snap dihapus dari Edit Profile — user gak bisa isi'],
+ ],
+ phones:[{label:'Profil Persona',dark:false,html:(d)=>`
+  ${statusbar()}
+  <div class="pbody">
+    <div style="height:340px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;flex-shrink:0">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,transparent 40%,rgba(10,20,18,.85) 100%)"></div>
+      <div style="position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:#fff">${ico('close')}</div>
+      <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:5px"><i style="width:26px;height:3px;border-radius:2px;background:#fff;display:block"></i><i style="width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.4);display:block"></i></div>
+      <div style="position:absolute;top:14px;right:14px;background:var(--hot);color:#fff;font-size:10px;font-weight:800;padding:5px 10px;border-radius:999px">PREMIUM</div>
+      <div style="position:absolute;bottom:16px;left:16px;color:#fff"><h2 style="font-family:var(--disp);font-weight:800;font-size:26px">Kayla, 24</h2><div style="font-size:12px;opacity:.9;display:flex;align-items:center;gap:4px;margin-top:4px">${ico('pin')} 3 miles away</div></div>
+    </div>
+    <div style="flex:1;background:var(--paper);border-radius:24px 24px 0 0;margin-top:-24px;padding:18px;position:relative;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><div style="width:32px;height:32px;border-radius:10px;background:var(--apricotpale);color:var(--apricottext);display:flex;align-items:center;justify-content:center">${ico('work')}</div><div style="font-size:13px;font-weight:600">Graphic Designer</div></div>
+      <div style="display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:10px;background:var(--apricotpale);color:var(--apricottext);display:flex;align-items:center;justify-content:center">${ico('school')}</div><div style="font-size:13px;font-weight:600">Universitas Lampung</div></div>
+      <div style="font-size:11px;font-weight:800;color:var(--subtle);margin:16px 0 8px">INTERESTS</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${['Coffee','Travel','Music','Hiking'].map(i=>`<span style="background:var(--hotpale);border:1px solid rgba(255,46,147,.3);border-radius:999px;padding:7px 13px;font-size:12px;color:var(--hottext);font-weight:600">${i}</span>`).join('')}</div>
+    </div>
+  </div>`}]
+},
+/* ---------- 12. DARK MODE ---------- */
+{id:'s12',num:'12',title:'Dark Mode',
+ desc:'Toggle dark mode dengan sistem warna dinamis. Background near-black pine-tinted (bukan abu generik). Pink stabilo tetap pop. 985 pemakaian warna auto-swap tanpa refactor.',
+ changes:[
+  ['new','Sistem warna dinamis: 985 pemakaian FoundColors auto-swap light/dark'],
+  ['plain','Dark background near-black pine-tinted (#0C1210), bukan abu generik'],
+  ['plain','Bubble keluar tetap pink stabilo (pop di gelap); masuk jadi surface gelap'],
+  ['plain','Pink-pale (kapsul nav, chip) jadi transparan biar gak nyilo'],
+  ['new','Toggle di Settings → Appearance, kesimpen (SharedPreferences), instant'],
+  ['plain','Support: efek muncul instan; nav pill + background theme-aware'],
+ ],
+ phones:[
+  {label:'Light',dark:false,html:(d)=>darkComparePhone(false)},
+  {label:'Dark',dark:true,html:(d)=>darkComparePhone(true)}
+ ]
+},
+];
+
+function darkComparePhone(dark){
+ return `
+  ${statusbar()}
+  <div class="pbody">
+    <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(dark)}</div>
+    <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px">
+      <div style="align-self:flex-start;background:${dark?'var(--d-surface)':'#fff'};border:1px solid ${dark?'var(--d-border)':'var(--line)'};color:${dark?'var(--d-fg)':'var(--ink)'};border-radius:4px 16px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">you actually cooked??</div>
+      <div style="align-self:flex-end;background:var(--hot);color:#fff;border-radius:16px 4px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">bold of you to assume</div>
+      <div style="align-self:flex-start;background:var(--apricotpale);border-radius:8px 18px 18px 18px;padding:10px 13px;color:var(--apricottext);font-size:12px;font-weight:700">🧸 sent you a Teddy</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 14px"><div style="flex:1;height:42px;background:${dark?'var(--d-surfacevar)':'var(--mist)'};border-radius:999px;display:flex;align-items:center;padding:0 16px;color:${dark?'var(--d-fgfaint)':'var(--faint)'};font-size:13px">Message…</div><div style="width:44px;height:44px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center">${ico('send')}</div></div>
+    ${navpill('Discover',dark)}
+  </div>`;
+}
+
+/* RENDER */
+const root=document.getElementById('sections-root');
+root.innerHTML=SECTIONS.map(s=>{
+ const changesHtml=s.changes.map(c=>{
+  if(c[0]==='old'){return `<li><span class="old">${c[1]}</span> → <span class="new">${c[3]}</span></li>`;}
+  return `<li>${c[1]}</li>`;
+ }).join('');
+ const phonesHtml=s.phones.map(p=>`<div class="pcol"><div class="phone ${p.dark?'dark':''}">${p.html(p.dark)}</div><div class="plabel">${p.label}</div></div>`).join('');
+ return `
+ <div class="sec" id="${s.id}">
+   <div class="sec-h"><span class="sec-num">${s.num}</span><h2>${s.title}</h2></div>
+   <div class="sec-desc">${s.desc}</div>
+   <div class="sec-body">
+     <div class="changes"><h3>Yang Berubah</h3><ul>${changesHtml}</ul></div>
+     <div class="phones">${phonesHtml}</div>
+   </div>
+ </div>`;
+}).join('');
+</script>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="wm">f<span class="ring"></span>und</div>
+  <p>Fitur 1:1 dengan AfterGlow — cuma UI/UX yang beda + rebrand pink stabilo. Semua logika app tidak disentuh.</p>
+  <div class="meta">Dokumen visual · disusun dari sesi pengembangan Found · package com.found.app · Firebase found-fc1a3</div>
+</div>
+
+</body></html>

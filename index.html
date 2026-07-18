@@ -141,11 +141,13 @@ addEventListener('DOMContentLoaded',()=>document.querySelectorAll('[data-i]').fo
     <li><a href="#s10">Profile (view sendiri)</a></li>
     <li><a href="#s11">Lihat Profil Persona</a></li>
     <li><a href="#s12">Dark Mode</a></li>
+    <li><a href="#s13">Liquid Glass Nav ✨</a></li>
   </ol>
 </div>
 
 <!-- SECTIONS INJECTED BELOW -->
 <div id="sections-root"></div>
+<div id="liquid-glass-root"></div>
 
 <script>
 /* ============ SECTION DATA + RENDERER ============ */
@@ -193,28 +195,32 @@ const SECTIONS=[
 },
 /* ---------- 2. AUTH ---------- */
 {id:'s2',num:'02',title:'Auth / Login',
- desc:'Direstrukturisasi ke "two-zone": header gradient hangat (plum→berry→rose) + kartu form putih naik dari bawah. Bukan lagi layout AfterGlow yang flat.',
+ desc:'Direstrukturisasi ke "two-zone": header gradient hangat (plum→berry→rose) + wordmark f◯und, lalu kartu form putih naik dari bawah (radius 30dp). Headline pakai display-serif dengan kata beraksen italic apricot.',
  changes:[
   ['old','"AFTER GLOW" + layout flat','new','Two-zone: header gradient + form sheet card'],
-  ['plain','Header band gradient hangat (plum→berry→rose) di atas'],
-  ['plain','Form putih dengan sudut membulat (radius 30dp) naik dari bawah'],
-  ['plain','Tombol utama jadi squircle pink stabilo (dulu pill emas)'],
-  ['plain','Input field jadi outline style (border selalu keliatan, focus pink)'],
+  ['plain','Header: wordmark f◯und + headline "Welcome back." ("back" italic apricot)'],
+  ['plain','Subtitle: "Your matches are waiting. Pick up right where you left off."'],
+  ['plain','Field: Email/username + Password (outline style, ikon di kiri)'],
+  ['old','Tombol pill emas','new','"Continue" pink stabilo + "Create account" (toggle mode)'],
+  ['plain','Footer: "Private by design. Built for real connections."'],
  ],
  phones:[{label:'Login',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody" style="padding:0">
-    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,#B83668);padding:40px 24px 60px;color:#fff;position:relative">
+    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,#B83668);padding:26px 24px 54px;color:#fff;position:relative">
       <div style="position:absolute;top:-30px;right:20px;width:110px;height:110px;border:10px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:30px;line-height:1.05">Welcome<br>to <span style="color:var(--apricot)">found</span></h2>
-      <p style="font-size:13px;opacity:.85;margin-top:8px">Real connections start here.</p>
+      <div style="margin-bottom:26px">${wm(22,'#fff')}</div>
+      <h2 style="font-family:var(--disp);font-weight:800;font-size:34px;line-height:1.02">Welcome<br><span style="font-style:italic;color:var(--apricot)">back</span>.</h2>
+      <p style="font-size:13px;opacity:.82;margin-top:10px">Your matches are waiting. Pick up right where you left off.</p>
     </div>
-    <div style="background:#fff;border-radius:30px 30px 0 0;margin-top:-30px;padding:26px 22px;flex:1">
-      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Email</div>
-      <div style="border:1.5px solid var(--line);border-radius:14px;padding:13px;color:var(--faint);font-size:14px;margin-bottom:14px">you@email.com</div>
-      <div class="btn-primary">Continue with email</div>
-      <div style="text-align:center;color:var(--subtle);font-size:12px;margin:14px 0">or</div>
-      <div class="btn-secondary">Continue with Google</div>
+    <div style="background:var(--paper);border-radius:30px 30px 0 0;margin-top:-30px;padding:26px 24px;flex:1">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Email or username</div>
+      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:14px"><span style="color:var(--subtle)">${ico('person')}</span><span style="color:var(--faint);font-size:14px">ava_brooks or you@example.com</span></div>
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Password</div>
+      <div style="display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:18px"><span style="color:var(--subtle)">${ico('lock')}</span><span style="color:var(--faint);font-size:14px">Enter password</span></div>
+      <div class="btn-primary">Continue</div>
+      <div style="margin-top:12px;background:transparent;border:1.5px solid var(--line);color:var(--ink);border-radius:16px;padding:13px;text-align:center;font-weight:700;font-size:14px">Create account</div>
+      <div style="text-align:center;color:var(--muted);font-size:12px;margin-top:16px">Private by design. Built for real connections.</div>
     </div>
   </div>`}]
 },
@@ -307,13 +313,14 @@ const SECTIONS=[
  phones:[{label:'Room Chat',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody">
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line)"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(150deg,var(--hot),var(--teal))"></div><div style="flex:1"><div style="font-family:var(--disp);font-weight:700;font-size:15px">Kayla</div><div style="font-size:10px;color:var(--subtle)">9:12 PM her time</div></div><div style="text-align:center"><div style="width:28px;height:28px;border-radius:50%;background:conic-gradient(var(--hot) 65%,var(--mist) 65%);display:flex;align-items:center;justify-content:center"><div style="width:20px;height:20px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">🔥</div></div><div style="font-size:7px;font-weight:700;color:var(--hot)">BURNING</div></div></div>
-    <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;background:#F7F4EE">
-      <div style="align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">you actually cooked?? 🥞</div>
-      <div style="align-self:flex-end;background:var(--hot);color:#fff;border-radius:16px 4px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%">bold of you to assume I don't have receipts ✓✓</div>
-      <div style="align-self:flex-start;background:var(--apricotpale);border:1px solid #F5D9AE;border-radius:8px 18px 18px 18px;padding:10px 13px;display:flex;gap:10px;align-items:center;color:var(--apricottext);font-size:12px;font-weight:700"><span style="width:32px;height:32px;border-radius:10px;background:var(--apricot);display:flex;align-items:center;justify-content:center">${ico('gift')}</span> Kayla sent you a Teddy</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)"><span style="color:var(--subtle)">‹</span><div style="width:38px;height:38px;border-radius:50%;padding:2px;background:linear-gradient(135deg,var(--rose,#F0567F),var(--teal))"><div style="width:100%;height:100%;border-radius:50%;background:linear-gradient(150deg,#F3B79A,#8E6a86)"></div></div><div style="flex:1"><div style="font-family:var(--disp);font-weight:700;font-size:15px">Kayla</div><div style="font-size:10px;color:var(--subtle)">9:12 PM her time</div></div><div style="background:var(--hotpale);color:var(--hottext);font-size:10px;font-weight:800;padding:5px 9px;border-radius:999px">12 left</div></div>
+    <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,#F2F8F4,#FDFDFB 50%,#FBF7F0);position:relative">
+      <div style="position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle at 20% 30%,var(--ink) 2px,transparent 2px),radial-gradient(circle at 70% 60%,var(--ink) 2px,transparent 2px);background-size:60px 60px"></div>
+      <div style="align-self:flex-start;background:#fff;border-radius:4px 16px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.05)">you actually cooked?? 🥞</div>
+      <div style="align-self:flex-end;background:var(--hot);color:#fff;border-radius:16px 4px 16px 16px;padding:9px 13px;font-size:13px;max-width:75%;position:relative">bold of you to assume I don't have receipts</div>
+      <div style="align-self:flex-start;background:linear-gradient(135deg,#FFF1D6,#fff);border:1px solid rgba(255,178,94,.34);border-radius:8px 18px 18px 18px;padding:10px 13px;display:flex;gap:10px;align-items:center;color:var(--apricottext);font-size:12px;font-weight:700;position:relative"><span style="width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.72);display:flex;align-items:center;justify-content:center;color:var(--apricotdeep)">${ico('gift')}</span> Sent you a gift · Teddy</div>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--line)"><div style="flex:1;height:42px;background:var(--mist);border-radius:999px;display:flex;align-items:center;padding:0 16px;color:var(--faint);font-size:13px">Message Kayla…</div><div style="width:44px;height:44px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center">${ico('send')}</div></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,.96);border-top:1px solid var(--line)"><div style="flex:1;height:42px;background:var(--mist);border-radius:999px;display:flex;align-items:center;padding:0 16px;color:var(--faint);font-size:13px">Message Kayla…</div><div style="width:44px;height:44px;border-radius:50%;background:var(--hot);color:#fff;display:flex;align-items:center;justify-content:center">${ico('send')}</div></div>
   </div>`}]
 },
 /* ---------- 7. COIN STORE ---------- */
@@ -354,21 +361,21 @@ const SECTIONS=[
  phones:[{label:'Paywall',dark:false,html:(d)=>`
   ${statusbar()}
   <div class="pbody">
-    <div style="background:linear-gradient(160deg,#3D1D3A,#7A2551 55%,var(--hotdeep));padding:22px 20px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-30px;right:24px;width:110px;height:110px;border:10px solid rgba(255,255,255,.12);border-radius:50%;transform:rotate(-8deg)"></div>
-      <div style="position:absolute;top:12px;right:14px;color:rgba(255,255,255,.7)">${ico('close')}</div>
-      <div style="display:inline-block;background:var(--hot);font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px">PREMIUM</div>
-      <h2 style="font-family:var(--disp);font-weight:800;font-size:24px;margin-top:10px">Get found faster.</h2>
-      <p style="font-size:12px;opacity:.85;margin-top:6px">Chat without limits and see everyone who sparked you.</p>
-    </div>
-    <div style="padding:16px">
-      <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px">What Premium unlocks</div>
-        <div style="display:flex;align-items:center;gap:14px;padding:8px 0"><div style="width:38px;height:38px;border-radius:50%;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hot)">${ico('chat')}</div><div><b style="font-size:14px">Unlimited messages</b><div style="font-size:12px;color:var(--muted)">Chat as much as you want</div></div></div>
-        <div style="display:flex;align-items:center;gap:14px;padding:8px 0"><div style="width:38px;height:38px;border-radius:50%;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hotdeep)">${ico('sparkle')}</div><div><b style="font-size:14px">See who sparked you</b><div style="font-size:12px;color:var(--muted)">Unlock every profile</div></div></div>
+    <div style="padding:16px 16px 0">
+      <div style="background:var(--tealdeep);border-radius:24px;padding:20px;color:#fff;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-30px;right:-20px;width:130px;height:130px;border:11px solid rgba(255,255,255,.14);border-radius:50%;transform:rotate(-8deg)"></div>
+        <div style="position:absolute;bottom:-10px;right:8px;width:56px;height:56px;border:6px solid rgba(240,86,127,.55);border-radius:50%;transform:rotate(-8deg)"></div>
+        <div style="display:inline-block;background:var(--hot);font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px">PREMIUM</div>
+        <h2 style="font-family:var(--disp);font-weight:800;font-size:24px;margin-top:10px">Get found faster.</h2>
+        <p style="font-size:12px;opacity:.82;margin-top:6px">Chat without limits and see everyone who sparked you.</p>
       </div>
-      <div style="margin-top:12px;border:2px solid var(--hot);background:var(--hotpale);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--hot);background:var(--hot)"></div><div style="flex:1"><b style="font-size:15px">3 Months Premium</b></div><b style="color:var(--hot)">Rp599k</b></div>
+    </div>
+    <div style="padding:14px 16px">
+      <div style="display:flex;align-items:center;gap:14px;padding:10px 0"><div style="width:40px;height:40px;border-radius:12px;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hot)">${ico('chat')}</div><div><b style="font-size:14px">Unlimited messages</b><div style="font-size:12px;color:var(--muted)">Chat as much as you want — no per-match limit</div></div></div>
+      <div style="display:flex;align-items:center;gap:14px;padding:10px 0"><div style="width:40px;height:40px;border-radius:12px;background:var(--hotpale);display:flex;align-items:center;justify-content:center;color:var(--hotdeep)">${ico('sparkle')}</div><div><b style="font-size:14px">See who sparked you</b><div style="font-size:12px;color:var(--muted)">Unlock every profile that sparked you back</div></div></div>
+      <div style="margin-top:10px;border:2px solid var(--hot);background:var(--hotpale);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:10px"><div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--hot);background:var(--hot)"></div><div style="flex:1"><b style="font-size:15px">3 Months Premium</b><div style="font-size:11px;color:var(--hottext)">Unlimited chat + see who sparked you</div></div><b style="color:var(--hot)">Rp599k</b></div>
       <div class="btn-primary" style="margin-top:12px">Activate 3 Months Premium</div>
+      <div style="text-align:center;color:var(--subtle);font-size:12px;margin-top:10px;font-weight:600">Maybe later</div>
     </div>
   </div>`}]
 },
@@ -497,6 +504,162 @@ root.innerHTML=SECTIONS.map(s=>{
    </div>
  </div>`;
 }).join('');
+
+/* ============ LIQUID GLASS INTERACTIVE SECTION ============ */
+const lgRoot=document.getElementById('liquid-glass-root');
+lgRoot.innerHTML=`
+ <div class="sec" id="s13">
+   <div class="sec-h"><span class="sec-num">13</span><h2>Liquid Glass Nav ✨</h2></div>
+   <div class="sec-desc">Konsep (belum di-APK) — nav pill dengan efek <b>liquid glass ala iOS 26</b>: indikator aktif <b>meregang/molor</b> saat pindah tab (efek gooey/metaball), <b>bisa di-drag</b>, dan background <b>frosted blur</b>. <b>Coba klik atau drag tab di bawah</b> — indikatornya bakal molor-nyambung kayak cairan.</div>
+   <div class="sec-body" style="justify-content:center">
+     <div style="display:flex;flex-direction:column;gap:26px;align-items:center;width:100%">
+
+       <!-- interactive phone -->
+       <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;align-items:flex-start">
+         <div class="pcol">
+           <div class="phone" style="height:560px;background:linear-gradient(180deg,#F2F8F4,#FDFDFB 50%,#FBF7F0)">
+             ${statusbar()}
+             <div class="pbody">
+               <div style="display:flex;align-items:center;padding:12px 16px">${wm(22)}<div style="flex:1"></div>${avatar(false)}</div>
+               <div id="lg-content" style="flex:1;margin:0 14px;border-radius:22px;background:linear-gradient(160deg,#F3B79A,#8E6a86);position:relative;overflow:hidden;display:flex;align-items:flex-end">
+                 <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))"></div>
+                 <div id="lg-content-label" style="position:relative;padding:16px;color:#fff;font-family:var(--disp);font-weight:800;font-size:24px">Discover</div>
+               </div>
+               <!-- LIQUID GLASS NAV -->
+               <div id="lg-nav-wrap" style="margin:10px 14px 14px;position:relative;height:60px;user-select:none;touch-action:none">
+                 <!-- frosted glass base -->
+                 <div style="position:absolute;inset:0;background:rgba(255,255,255,.55);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(255,255,255,.7);border-radius:26px;box-shadow:0 8px 30px rgba(23,49,44,.14),inset 0 1px 1px rgba(255,255,255,.9)"></div>
+                 <!-- gooey layer (SVG filter) -->
+                 <div id="lg-goo" style="position:absolute;inset:0;filter:url(#gooey);pointer-events:none">
+                   <div id="lg-indicator" style="position:absolute;top:8px;left:8px;height:44px;width:78px;background:var(--hot);border-radius:22px"></div>
+                 </div>
+                 <!-- tab buttons -->
+                 <div id="lg-tabs" style="position:absolute;inset:0;display:flex;align-items:center">
+                   <div class="lg-tab" data-i="explore" data-label="Discover" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:#fff;z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('explore')}</span><span class="lg-tab-txt">Discover</span></div>
+                   <div class="lg-tab" data-i="sparkle" data-label="Sparks" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('sparkle')}</span><span class="lg-tab-txt" style="display:none">Sparks</span></div>
+                   <div class="lg-tab" data-i="chat" data-label="Chats" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('chat')}</span><span class="lg-tab-txt" style="display:none">Chats</span></div>
+                   <div class="lg-tab" data-i="cart" data-label="Store" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:100%;cursor:grab;color:var(--subtle);z-index:2;font-size:11px;font-weight:800"><span style="display:flex">${ico('cart')}</span><span class="lg-tab-txt" style="display:none">Store</span></div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="plabel">👆 Klik / drag tab-nya</div>
+         </div>
+
+         <div class="changes" style="max-width:340px">
+           <h3>Cara Kerja Efeknya</h3>
+           <ul>
+             <li><b>Meregang (gooey):</b> pas pindah tab, indikator molor-nyambung ke tujuan pakai SVG filter (blur + contrast) — kayak dua tetes cairan yang nyatu.</li>
+             <li><b>Bisa di-drag:</b> tekan & geser indikator; pas dilepas dia "snap" ke tab terdekat.</li>
+             <li><b>Frosted glass:</b> background nav blur tembus-pandang (backdrop-filter) — konten di belakang keliatan buram.</li>
+             <li><b>Label aktif:</b> cuma tab aktif yang nunjukin teks (ikut meregang), sisanya ikon aja.</li>
+           </ul>
+           <h3 style="margin-top:16px">Rencana di APK</h3>
+           <ul>
+             <li>Android <b>12+ (API 31)</b>: blur asli via <span class="tag">Modifier.blur</span> / RenderEffect.</li>
+             <li>Di bawahnya: <b>fallback</b> semi-transparan (tanpa blur) — gak nge-lag.</li>
+             <li>Efek molor pakai <b>animasi shape</b> (animateDpAsState) antar posisi tab.</li>
+           </ul>
+         </div>
+       </div>
+
+     </div>
+   </div>
+ </div>`;
+
+/* SVG gooey filter (shared) */
+const svgNS='http://www.w3.org/2000/svg';
+const svg=document.createElementNS(svgNS,'svg');
+svg.setAttribute('style','position:absolute;width:0;height:0');
+svg.innerHTML='<defs><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"/><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs>';
+document.body.appendChild(svg);
+
+/* interactivity: click + drag with gooey stretch */
+(function(){
+ const wrap=document.getElementById('lg-nav-wrap');
+ const ind=document.getElementById('lg-indicator');
+ const tabs=Array.from(document.querySelectorAll('.lg-tab'));
+ const PAD=8, H=44;
+ let active=0, dragging=false, startX=0, curX=0;
+
+ function tabRect(i){const w=(wrap.clientWidth-PAD*2)/tabs.length;return {x:PAD+i*w, w:w};}
+ // indicator "resting" uses a pill sized to active tab's label width feel
+ function setIndicator(x,w){ind.style.left=x+'px';ind.style.width=w+'px';}
+ function restWidth(){return 78;} // active pill width
+
+ function activate(i,animate){
+   active=i;
+   tabs.forEach((t,idx)=>{
+     const txt=t.querySelector('.lg-tab-txt');
+     t.style.color=idx===i?'#fff':'var(--subtle)';
+     txt.style.display=idx===i?'inline':'none';
+   });
+   const r=tabRect(i);
+   const w=restWidth();
+   const cx=r.x + r.w/2;
+   if(animate){ind.style.transition='left .42s cubic-bezier(.68,-0.4,.32,1.4), width .42s cubic-bezier(.68,-0.4,.32,1.4)';}
+   else{ind.style.transition='none';}
+   setIndicator(cx - w/2, w);
+   // update big content bg label
+   document.getElementById('lg-content-label').textContent=tabs[i].dataset.label;
+ }
+
+ // click
+ tabs.forEach((t,i)=>{
+   t.addEventListener('click',(e)=>{if(!wasDragged)activate(i,true);});
+ });
+
+ // drag (pointer events)
+ let wasDragged=false;
+ function onDown(e){
+   dragging=true;wasDragged=false;
+   startX=(e.touches?e.touches[0].clientX:e.clientX);
+   ind.style.transition='none';
+   tabs.forEach(t=>t.style.cursor='grabbing');
+ }
+ function onMove(e){
+   if(!dragging)return;
+   const px=(e.touches?e.touches[0].clientX:e.clientX);
+   const dx=px-startX;
+   if(Math.abs(dx)>4)wasDragged=true;
+   const rect=wrap.getBoundingClientRect();
+   let localX=px-rect.left;
+   localX=Math.max(PAD+restWidth()/2, Math.min(wrap.clientWidth-PAD-restWidth()/2, localX));
+   // stretch: widen indicator toward drag direction (gooey feel)
+   const r=tabRect(active);
+   const homeCx=r.x+r.w/2;
+   const stretch=Math.min(46, Math.abs(localX-homeCx)*0.7);
+   setIndicator(localX - (restWidth()+stretch)/2, restWidth()+stretch);
+   // live-highlight nearest tab
+   const w=(wrap.clientWidth-PAD*2)/tabs.length;
+   const near=Math.max(0,Math.min(tabs.length-1,Math.floor((localX-PAD)/w)));
+   tabs.forEach((t,idx)=>{const txt=t.querySelector('.lg-tab-txt');t.style.color=idx===near?'#fff':'var(--subtle)';});
+   if(e.cancelable)e.preventDefault();
+ }
+ function onUp(e){
+   if(!dragging)return;dragging=false;
+   tabs.forEach(t=>t.style.cursor='grab');
+   const px=(e.changedTouches?e.changedTouches[0].clientX:e.clientX);
+   const rect=wrap.getBoundingClientRect();
+   const localX=px-rect.left;
+   const w=(wrap.clientWidth-PAD*2)/tabs.length;
+   let near=Math.max(0,Math.min(tabs.length-1,Math.floor((localX-PAD)/w)));
+   activate(near,true);
+   setTimeout(()=>{wasDragged=false;},50);
+ }
+ ind.parentElement.style.pointerEvents='none';
+ wrap.addEventListener('pointerdown',onDown);
+ window.addEventListener('pointermove',onMove);
+ window.addEventListener('pointerup',onUp);
+ // touch fallbacks
+ wrap.addEventListener('touchstart',onDown,{passive:true});
+ window.addEventListener('touchmove',onMove,{passive:false});
+ window.addEventListener('touchend',onUp);
+
+ // init after layout
+ setTimeout(()=>activate(0,false),60);
+ window.addEventListener('resize',()=>activate(active,false));
+})();
 </script>
 
 <!-- FOOTER -->
